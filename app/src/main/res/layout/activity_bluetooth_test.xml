@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/ScreenTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/bt_title" />
+
+        <TextView
+            android:id="@+id/text_bt_status"
+            style="@style/StatusCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/bt_status_ready" />
+
+        <Button
+            android:id="@+id/button_bt_enable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/bt_button_enable" />
+
+        <Button
+            android:id="@+id/button_bt_scan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/bt_button_scan" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/bt_label_paired"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/text_bt_paired"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/common_dash" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/bt_label_discovered"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/text_bt_discovered"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/common_dash" />
+
+    </LinearLayout>
+</ScrollView>

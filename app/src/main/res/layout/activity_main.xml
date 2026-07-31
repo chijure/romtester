@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/primary"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/main_title"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/main_subtitle"
+            android:textColor="#DCE6F5"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                style="@style/SectionLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/main_section_basics" />
+
+            <Button
+                android:id="@+id/button_io_test"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@android:drawable/stat_sys_speakerphone"
+                android:drawablePadding="12dp"
+                android:gravity="center_vertical|left"
+                android:text="@string/main_button_io_test" />
+
+            <Button
+                android:id="@+id/button_screen_test"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:drawableLeft="@android:drawable/ic_menu_gallery"
+                android:drawablePadding="12dp"
+                android:gravity="center_vertical|left"
+                android:text="@string/main_button_screen_test" />
+
+            <Button
+                android:id="@+id/button_sensor_test"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:drawableLeft="@android:drawable/ic_menu_compass"
+                android:drawablePadding="12dp"
+                android:gravity="center_vertical|left"
+                android:text="@string/main_button_sensor_test" />
+
+            <Button
+                android:id="@+id/button_multitouch_test"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:drawableLeft="@android:drawable/ic_menu_edit"
+                android:drawablePadding="12dp"
+                android:gravity="center_vertical|left"
+                android:text="@string/main_button_multitouch_test" />
+
+            <Button
+                android:id="@+id/button_device_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:drawableLeft="@android:drawable/ic_menu_info_details"
+                android:drawablePadding="12dp"
+                android:gravity="center_vertical|left"
+                android:text="@string/main_button_device_info" />
+
+            <TextView
+                style="@style/SectionLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/main_section_media" />
+
+            <Button
+                android:id="@+id/button_camera_test"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@android:drawable/ic_menu_camera"
+                android:drawablePadding="12dp"
+                android:gravity="center_vertical|left"
+                android:text="@string/main_button_camera_test" />
+
+            <Button
+                android:id="@+id/button_microphone_test"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:drawableLeft="@android:drawable/ic_btn_speak_now"
+                android:drawablePadding="12dp"
+                android:gravity="center_vertical|left"
+                android:text="@string/main_button_microphone_test" />
+
+            <Button
+                android:id="@+id/button_video_test"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:drawableLeft="@android:drawable/ic_menu_slideshow"
+                android:drawablePadding="12dp"
+                android:gravity="center_vertical|left"
+                android:text="@string/main_button_video_test" />
+
+            <Button
+                android:id="@+id/button_opengl_test"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:drawableLeft="@android:drawable/ic_menu_manage"
+                android:drawablePadding="12dp"
+                android:gravity="center_vertical|left"
+                android:text="@string/main_button_opengl_test" />
+
+            <TextView
+                style="@style/SectionLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/main_section_connectivity" />
+
+            <Button
+                android:id="@+id/button_location_test"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@android:drawable/ic_menu_mylocation"
+                android:drawablePadding="12dp"
+                android:gravity="center_vertical|left"
+                android:text="@string/main_button_location_test" />
+
+            <Button
+                android:id="@+id/button_wifi_test"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:drawableLeft="@android:drawable/ic_menu_upload"
+                android:drawablePadding="12dp"
+                android:gravity="center_vertical|left"
+                android:text="@string/main_button_wifi_test" />
+
+            <Button
+                android:id="@+id/button_bluetooth_test"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:drawableLeft="@android:drawable/stat_sys_data_bluetooth"
+                android:drawablePadding="12dp"
+                android:gravity="center_vertical|left"
+                android:text="@string/main_button_bluetooth_test" />
+
+            <Button
+                android:id="@+id/button_nfc_test"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:drawableLeft="@android:drawable/ic_menu_share"
+                android:drawablePadding="12dp"
+                android:gravity="center_vertical|left"
+                android:text="@string/main_button_nfc_test" />
+
+            <TextView
+                style="@style/SectionLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/main_section_telephony" />
+
+            <Button
+                android:id="@+id/button_phone_test"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@android:drawable/ic_menu_call"
+                android:drawablePadding="12dp"
+                android:gravity="center_vertical|left"
+                android:text="@string/main_button_phone_test" />
+
+            <Button
+                android:id="@+id/button_settings_shortcuts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:drawableLeft="@android:drawable/ic_menu_preferences"
+                android:drawablePadding="12dp"
+                android:gravity="center_vertical|left"
+                android:text="@string/main_button_settings_shortcuts" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

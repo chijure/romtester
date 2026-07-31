@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">QApp ROM Tester</string>
+
+    <!-- Common -->
+    <string name="common_dash">-</string>
+
+    <!-- Main -->
+    <string name="main_title">ROM Hardware Tester</string>
+    <string name="main_subtitle">Choose a test</string>
+    <string name="main_section_basics">Basics</string>
+    <string name="main_button_io_test">Sound / vibration / touch test</string>
+    <string name="main_button_screen_test">Screen / dead pixel test</string>
+    <string name="main_button_sensor_test">Sensor test</string>
+    <string name="main_button_multitouch_test">Multitouch test</string>
+    <string name="main_button_device_info">Device / battery / network info</string>
+    <string name="main_section_media">Media</string>
+    <string name="main_button_camera_test">Camera / flashlight test</string>
+    <string name="main_button_microphone_test">Microphone test</string>
+    <string name="main_button_video_test">Video record / playback test</string>
+    <string name="main_button_opengl_test">OpenGL rendering test</string>
+    <string name="main_section_connectivity">Connectivity</string>
+    <string name="main_button_location_test">GPS / location test</string>
+    <string name="main_button_wifi_test">WiFi test</string>
+    <string name="main_button_bluetooth_test">Bluetooth test</string>
+    <string name="main_button_nfc_test">NFC test</string>
+    <string name="main_section_telephony">Telephony &amp; system</string>
+    <string name="main_button_phone_test">Phone / SMS test</string>
+    <string name="main_button_settings_shortcuts">Tethering / USB mode settings</string>
+
+    <!-- IO test -->
+    <string name="io_title">Sound / vibration / touch test</string>
+    <string name="io_status_placeholder">Status</string>
+    <string name="io_button_sound">Test Sound</string>
+    <string name="io_button_vibrate">Test Vibration</string>
+    <string name="io_button_stop">Stop</string>
+    <string name="io_touch_title">Touch test</string>
+    <string name="io_touch_placeholder">Touch inside box</string>
+    <string name="io_status_ready">Ready. Press a test button.</string>
+    <string name="io_status_sound_played">Sound test: beep played</string>
+    <string name="io_status_sound_unavailable">Sound test failed: tone generator unavailable</string>
+    <string name="io_status_vibration_no_vibrator">Vibration test failed: no vibrator</string>
+    <string name="io_status_vibration_pulse">Vibration test: 500ms pulse</string>
+    <string name="io_status_stopped">Tests stopped</string>
+    <string name="io_touch_action_down">DOWN</string>
+    <string name="io_touch_action_move">MOVE</string>
+    <string name="io_touch_action_up">UP</string>
+    <string name="io_touch_action_other">OTHER</string>
+    <string name="io_touch_message">Touch %1$s X=%2$d Y=%3$d</string>
+
+    <!-- Screen test -->
+    <string-array name="screen_test_color_names">
+        <item>White</item>
+        <item>Black</item>
+        <item>Red</item>
+        <item>Green</item>
+        <item>Blue</item>
+        <item>Gray</item>
+    </string-array>
+    <string name="screen_test_suffix"> - tap to continue, back to exit</string>
+
+    <!-- Sensor test -->
+    <string name="sensor_title">Sensor test</string>
+    <string name="sensor_label_accelerometer">Accelerometer</string>
+    <string name="sensor_reading_placeholder">Reading...</string>
+    <string name="sensor_label_gyroscope">Gyroscope</string>
+    <string name="sensor_label_magnetic">Magnetic field</string>
+    <string name="sensor_label_light">Light</string>
+    <string name="sensor_label_proximity">Proximity</string>
+    <string name="sensor_not_available">Not available on this device</string>
+    <string name="sensor_light_format">%1$.1f lx</string>
+    <string name="sensor_proximity_format">%1$.1f cm</string>
+    <string name="sensor_xyz_format">x=%1$.2f  y=%2$.2f  z=%3$.2f</string>
+
+    <!-- Camera test -->
+    <string name="camera_title">Camera / flashlight test</string>
+    <string name="camera_status_ready">Ready</string>
+    <string name="camera_button_capture">Capture photo</string>
+    <string name="camera_button_torch_on">Turn flashlight on</string>
+    <string name="camera_button_torch_off">Turn flashlight off</string>
+    <string name="camera_no_app">No camera app available</string>
+    <string name="camera_photo_captured">Photo captured</string>
+    <string name="camera_capture_cancelled">Capture cancelled or failed</string>
+    <string name="camera_error_format">Camera error: %1$s</string>
+    <string name="camera_flashlight_error_format">Flashlight error: %1$s</string>
+    <string name="camera_flashlight_unavailable_format">Flashlight not available: %1$s</string>
+
+    <!-- Device info -->
+    <string name="device_info_title">Device / battery / network info</string>
+    <string name="device_info_label_device">Device</string>
+    <string name="device_info_label_battery">Battery</string>
+    <string name="device_info_label_storage">Storage</string>
+    <string name="device_info_label_network">Network</string>
+    <string name="device_info_button_refresh">Refresh</string>
+    <string name="device_info_device_format">Manufacturer: %1$s\nModel: %2$s\nAndroid version: %3$s (API %4$d)\nBuild fingerprint: %5$s</string>
+    <string name="device_info_battery_unavailable">Battery status unavailable</string>
+    <string name="device_info_source_ac">AC charger</string>
+    <string name="device_info_source_usb">USB</string>
+    <string name="device_info_source_none">Not charging</string>
+    <string name="device_info_battery_format">Level: %1$s\nPower source: %2$s</string>
+    <string name="device_info_level_percent_format">%1$d%%</string>
+    <string name="device_info_level_unknown">unknown</string>
+    <string name="device_info_storage_format">Free: %1$.0f MB / Total: %2$.0f MB</string>
+    <string name="device_info_wifi_line_format">WiFi: %1$s</string>
+    <string name="device_info_state_enabled">enabled</string>
+    <string name="device_info_state_disabled">disabled</string>
+    <string name="device_info_wifi_ssid_suffix"> (%1$s)</string>
+    <string name="device_info_connection_label">\nConnection: </string>
+    <string name="device_info_no_connection">No active connection</string>
+
+    <!-- Microphone test -->
+    <string name="mic_title">Microphone test</string>
+    <string name="mic_status_ready">Ready</string>
+    <string name="mic_button_record">Start recording</string>
+    <string name="mic_button_play">Play recording</string>
+    <string name="mic_permission_denied">Microphone permission denied</string>
+    <string name="mic_button_stop_recording">Stop recording</string>
+    <string name="mic_status_recording">Recording...</string>
+    <string name="mic_recording_failed_format">Recording failed: %1$s</string>
+    <string name="mic_status_recording_saved">Recording saved</string>
+    <string name="mic_status_recording_too_short">Recording too short, discarded</string>
+    <string name="mic_button_stop_playback">Stop playback</string>
+    <string name="mic_status_playing">Playing...</string>
+    <string name="mic_playback_failed_format">Playback failed: %1$s</string>
+
+    <!-- Multitouch test -->
+    <string name="multitouch_status">Fingers down: %1$d  |  Max detected: %2$d</string>
+
+    <!-- Location test -->
+    <string name="location_title">GPS / location test</string>
+    <string name="location_status_ready">Ready</string>
+    <string name="location_data_placeholder">Latitude: -\nLongitude: -\nAccuracy: -\nSatellites: -</string>
+    <string name="location_button_start">Start GPS</string>
+    <string name="location_provider_disabled">GPS provider disabled</string>
+    <string name="location_permission_denied">Location permission denied</string>
+    <string name="location_gps_off">GPS is turned off. Enable it in Settings.</string>
+    <string name="location_button_stop">Stop GPS</string>
+    <string name="location_status_tracking">Tracking...</string>
+    <string name="location_status_stopped">Stopped</string>
+    <string name="location_status_fix_received">Location fix received</string>
+    <string name="location_data_format">Latitude: %1$.6f\nLongitude: %2$.6f\nAccuracy: %3$.1f m\nSatellites: %4$s</string>
+    <string name="location_data_no_fix_format">Latitude: -\nLongitude: -\nAccuracy: -\nSatellites: %1$s</string>
+
+    <!-- WiFi test -->
+    <string name="wifi_title">WiFi test</string>
+    <string name="wifi_status_ready">Ready</string>
+    <string name="wifi_button_scan">Scan nearby networks</string>
+    <string name="wifi_label_nearby">Nearby networks</string>
+    <string name="wifi_results_no_scan">No scan yet</string>
+    <string name="wifi_disabled">WiFi is disabled. Enable it in Settings.</string>
+    <string name="wifi_connected_format">WiFi enabled. Connected to: %1$s</string>
+    <string name="wifi_ssid_unknown">unknown</string>
+    <string name="wifi_status_scanning">Scanning...</string>
+    <string name="wifi_scan_failed">Scan request failed or throttled, showing last known results</string>
+    <string name="wifi_no_networks">No networks found</string>
+    <string name="wifi_ssid_hidden">(hidden)</string>
+    <string name="wifi_result_line_format">%1$s  (%2$d dBm)\n</string>
+
+    <!-- Bluetooth test -->
+    <string name="bt_title">Bluetooth test</string>
+    <string name="bt_status_ready">Ready</string>
+    <string name="bt_button_enable">Enable Bluetooth</string>
+    <string name="bt_button_scan">Scan for nearby devices</string>
+    <string name="bt_label_paired">Paired devices</string>
+    <string name="bt_label_discovered">Discovered devices</string>
+    <string name="bt_status_scan_finished">Scan finished</string>
+    <string name="bt_no_hardware">No Bluetooth hardware on this device</string>
+    <string name="bt_already_enabled">Bluetooth already enabled</string>
+    <string name="bt_enable_first">Enable Bluetooth first</string>
+    <string name="bt_status_scanning">Scanning...</string>
+    <string name="bt_permission_denied">Bluetooth permission denied</string>
+    <string name="bt_status_enabled">Bluetooth enabled</string>
+    <string name="bt_status_disabled">Bluetooth disabled</string>
+    <string name="bt_no_paired">No paired devices</string>
+    <string name="bt_permission_error_format">Permission error: %1$s</string>
+    <string name="bt_device_unknown_name">(unknown)</string>
+
+    <!-- NFC test -->
+    <string name="nfc_title">NFC test</string>
+    <string name="nfc_status_checking">Checking...</string>
+    <string name="nfc_tag_placeholder">No tag scanned yet. Hold a tag near the device.</string>
+    <string name="nfc_no_hardware">No NFC hardware on this device</string>
+    <string name="nfc_disabled">NFC is turned off. Enable it in Settings.</string>
+    <string name="nfc_enabled_ready">NFC enabled. Hold a tag near the device.</string>
+    <string name="nfc_tag_id_format">Tag ID: %1$s</string>
+
+    <!-- Video test -->
+    <string name="video_title">Video record / playback test</string>
+    <string name="video_status_ready">Ready</string>
+    <string name="video_button_record">Record video</string>
+    <string name="video_no_camera_app">No camera app available</string>
+    <string name="video_status_playing_back">Video recorded, playing back...</string>
+    <string name="video_status_cancelled">Recording cancelled or failed</string>
+
+    <!-- Phone test -->
+    <string name="phone_title">Phone / SMS test</string>
+    <string name="phone_info_reading">Reading telephony info...</string>
+    <string name="phone_disclaimer">These buttons only open the dialer / SMS app with a draft. Nothing is sent automatically; you confirm and send it yourself.</string>
+    <string name="phone_button_dialer">Open dialer (test a call)</string>
+    <string name="phone_button_sms">Open SMS compose (test a text)</string>
+    <string name="phone_signal_level_format">Signal level: %1$d / 4</string>
+    <string name="phone_signal_asu_format">Signal (ASU): %1$d / 31</string>
+    <string name="phone_signal_default">Signal: -</string>
+    <string name="phone_no_dialer_app">No dialer app found</string>
+    <string name="phone_sms_draft_body">QApp ROM Tester: SMS test message</string>
+    <string name="phone_no_sms_app">No SMS app found</string>
+    <string name="phone_info_format">SIM state: %1$s\nPhone type: %2$s\nNetwork type: %3$s\nOperator: %4$s\n%5$s</string>
+    <string name="phone_sim_absent">No SIM</string>
+    <string name="phone_sim_ready">Ready</string>
+    <string name="phone_sim_pin_required">PIN required</string>
+    <string name="phone_sim_puk_required">PUK required</string>
+    <string name="phone_sim_network_locked">Network locked</string>
+    <string name="phone_sim_unknown">Unknown</string>
+    <string name="phone_type_gsm">GSM</string>
+    <string name="phone_type_cdma">CDMA</string>
+    <string name="phone_type_sip">SIP</string>
+    <string name="phone_type_none">None</string>
+    <string name="phone_network_gprs">GPRS</string>
+    <string name="phone_network_edge">EDGE</string>
+    <string name="phone_network_umts">UMTS</string>
+    <string name="phone_network_hsdpa">HSDPA</string>
+    <string name="phone_network_hsupa">HSUPA</string>
+    <string name="phone_network_hspa">HSPA</string>
+    <string name="phone_network_hspap">HSPA+</string>
+    <string name="phone_network_lte">LTE</string>
+    <string name="phone_network_cdma">CDMA</string>
+    <string name="phone_network_evdo">EVDO</string>
+    <string name="phone_network_unknown">Unknown</string>
+
+    <!-- Settings shortcuts -->
+    <string name="settings_title">Tethering / USB mode settings</string>
+    <string name="settings_tethering_desc">These aren\'t testable from inside an app, so these buttons just take you to the right system settings screen.</string>
+    <string name="settings_button_tethering">Open WiFi / USB tethering settings</string>
+    <string name="settings_usb_desc">For MTP/PTP: plug in the USB cable, pull down the notification shade, and tap the USB notification to choose the connection mode.</string>
+    <string name="settings_button_open_settings">Open general Settings</string>
+</resources>

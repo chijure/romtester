@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">QApp ROM Tester</string>
+
+    <!-- Common -->
+    <string name="common_dash">-</string>
+
+    <!-- Main -->
+    <string name="main_title">Probador de hardware ROM</string>
+    <string name="main_subtitle">Elige una prueba</string>
+    <string name="main_section_basics">Básico</string>
+    <string name="main_button_io_test">Prueba de sonido / vibración / táctil</string>
+    <string name="main_button_screen_test">Prueba de pantalla / píxeles muertos</string>
+    <string name="main_button_sensor_test">Prueba de sensores</string>
+    <string name="main_button_multitouch_test">Prueba multitáctil</string>
+    <string name="main_button_device_info">Información de dispositivo / batería / red</string>
+    <string name="main_section_media">Multimedia</string>
+    <string name="main_button_camera_test">Prueba de cámara / linterna</string>
+    <string name="main_button_microphone_test">Prueba de micrófono</string>
+    <string name="main_button_video_test">Prueba de grabación / reproducción de video</string>
+    <string name="main_button_opengl_test">Prueba de renderizado OpenGL</string>
+    <string name="main_section_connectivity">Conectividad</string>
+    <string name="main_button_location_test">Prueba de GPS / ubicación</string>
+    <string name="main_button_wifi_test">Prueba de WiFi</string>
+    <string name="main_button_bluetooth_test">Prueba de Bluetooth</string>
+    <string name="main_button_nfc_test">Prueba de NFC</string>
+    <string name="main_section_telephony">Telefonía y sistema</string>
+    <string name="main_button_phone_test">Prueba de teléfono / SMS</string>
+    <string name="main_button_settings_shortcuts">Ajustes de anclaje / modo USB</string>
+
+    <!-- IO test -->
+    <string name="io_title">Prueba de sonido / vibración / táctil</string>
+    <string name="io_status_placeholder">Estado</string>
+    <string name="io_button_sound">Probar sonido</string>
+    <string name="io_button_vibrate">Probar vibración</string>
+    <string name="io_button_stop">Detener</string>
+    <string name="io_touch_title">Prueba táctil</string>
+    <string name="io_touch_placeholder">Toca dentro del recuadro</string>
+    <string name="io_status_ready">Listo. Pulsa un botón de prueba.</string>
+    <string name="io_status_sound_played">Prueba de sonido: pitido reproducido</string>
+    <string name="io_status_sound_unavailable">Prueba de sonido fallida: generador de tonos no disponible</string>
+    <string name="io_status_vibration_no_vibrator">Prueba de vibración fallida: no hay vibrador</string>
+    <string name="io_status_vibration_pulse">Prueba de vibración: pulso de 500 ms</string>
+    <string name="io_status_stopped">Pruebas detenidas</string>
+    <string name="io_touch_action_down">ABAJO</string>
+    <string name="io_touch_action_move">MOVER</string>
+    <string name="io_touch_action_up">ARRIBA</string>
+    <string name="io_touch_action_other">OTRO</string>
+    <string name="io_touch_message">Toque %1$s X=%2$d Y=%3$d</string>
+
+    <!-- Screen test -->
+    <string-array name="screen_test_color_names">
+        <item>Blanco</item>
+        <item>Negro</item>
+        <item>Rojo</item>
+        <item>Verde</item>
+        <item>Azul</item>
+        <item>Gris</item>
+    </string-array>
+    <string name="screen_test_suffix"> - toca para continuar, atrás para salir</string>
+
+    <!-- Sensor test -->
+    <string name="sensor_title">Prueba de sensores</string>
+    <string name="sensor_label_accelerometer">Acelerómetro</string>
+    <string name="sensor_reading_placeholder">Leyendo...</string>
+    <string name="sensor_label_gyroscope">Giroscopio</string>
+    <string name="sensor_label_magnetic">Campo magnético</string>
+    <string name="sensor_label_light">Luz</string>
+    <string name="sensor_label_proximity">Proximidad</string>
+    <string name="sensor_not_available">No disponible en este dispositivo</string>
+    <string name="sensor_light_format">%1$.1f lx</string>
+    <string name="sensor_proximity_format">%1$.1f cm</string>
+    <string name="sensor_xyz_format">x=%1$.2f  y=%2$.2f  z=%3$.2f</string>
+
+    <!-- Camera test -->
+    <string name="camera_title">Prueba de cámara / linterna</string>
+    <string name="camera_status_ready">Listo</string>
+    <string name="camera_button_capture">Capturar foto</string>
+    <string name="camera_button_torch_on">Encender linterna</string>
+    <string name="camera_button_torch_off">Apagar linterna</string>
+    <string name="camera_no_app">No hay ninguna app de cámara disponible</string>
+    <string name="camera_photo_captured">Foto capturada</string>
+    <string name="camera_capture_cancelled">Captura cancelada o fallida</string>
+    <string name="camera_error_format">Error de cámara: %1$s</string>
+    <string name="camera_flashlight_error_format">Error de linterna: %1$s</string>
+    <string name="camera_flashlight_unavailable_format">Linterna no disponible: %1$s</string>
+
+    <!-- Device info -->
+    <string name="device_info_title">Información de dispositivo / batería / red</string>
+    <string name="device_info_label_device">Dispositivo</string>
+    <string name="device_info_label_battery">Batería</string>
+    <string name="device_info_label_storage">Almacenamiento</string>
+    <string name="device_info_label_network">Red</string>
+    <string name="device_info_button_refresh">Actualizar</string>
+    <string name="device_info_device_format">Fabricante: %1$s\nModelo: %2$s\nVersión de Android: %3$s (API %4$d)\nHuella de compilación: %5$s</string>
+    <string name="device_info_battery_unavailable">Estado de la batería no disponible</string>
+    <string name="device_info_source_ac">Cargador de CA</string>
+    <string name="device_info_source_usb">USB</string>
+    <string name="device_info_source_none">Sin carga</string>
+    <string name="device_info_battery_format">Nivel: %1$s\nFuente de energía: %2$s</string>
+    <string name="device_info_level_percent_format">%1$d%%</string>
+    <string name="device_info_level_unknown">desconocido</string>
+    <string name="device_info_storage_format">Libre: %1$.0f MB / Total: %2$.0f MB</string>
+    <string name="device_info_wifi_line_format">WiFi: %1$s</string>
+    <string name="device_info_state_enabled">activado</string>
+    <string name="device_info_state_disabled">desactivado</string>
+    <string name="device_info_wifi_ssid_suffix"> (%1$s)</string>
+    <string name="device_info_connection_label">\nConexión: </string>
+    <string name="device_info_no_connection">Sin conexión activa</string>
+
+    <!-- Microphone test -->
+    <string name="mic_title">Prueba de micrófono</string>
+    <string name="mic_status_ready">Listo</string>
+    <string name="mic_button_record">Iniciar grabación</string>
+    <string name="mic_button_play">Reproducir grabación</string>
+    <string name="mic_permission_denied">Permiso de micrófono denegado</string>
+    <string name="mic_button_stop_recording">Detener grabación</string>
+    <string name="mic_status_recording">Grabando...</string>
+    <string name="mic_recording_failed_format">Grabación fallida: %1$s</string>
+    <string name="mic_status_recording_saved">Grabación guardada</string>
+    <string name="mic_status_recording_too_short">Grabación demasiado corta, descartada</string>
+    <string name="mic_button_stop_playback">Detener reproducción</string>
+    <string name="mic_status_playing">Reproduciendo...</string>
+    <string name="mic_playback_failed_format">Reproducción fallida: %1$s</string>
+
+    <!-- Multitouch test -->
+    <string name="multitouch_status">Dedos activos: %1$d  |  Máximo detectado: %2$d</string>
+
+    <!-- Location test -->
+    <string name="location_title">Prueba de GPS / ubicación</string>
+    <string name="location_status_ready">Listo</string>
+    <string name="location_data_placeholder">Latitud: -\nLongitud: -\nPrecisión: -\nSatélites: -</string>
+    <string name="location_button_start">Iniciar GPS</string>
+    <string name="location_provider_disabled">Proveedor de GPS deshabilitado</string>
+    <string name="location_permission_denied">Permiso de ubicación denegado</string>
+    <string name="location_gps_off">El GPS está apagado. Actívalo en Ajustes.</string>
+    <string name="location_button_stop">Detener GPS</string>
+    <string name="location_status_tracking">Rastreando...</string>
+    <string name="location_status_stopped">Detenido</string>
+    <string name="location_status_fix_received">Posición recibida</string>
+    <string name="location_data_format">Latitud: %1$.6f\nLongitud: %2$.6f\nPrecisión: %3$.1f m\nSatélites: %4$s</string>
+    <string name="location_data_no_fix_format">Latitud: -\nLongitud: -\nPrecisión: -\nSatélites: %1$s</string>
+
+    <!-- WiFi test -->
+    <string name="wifi_title">Prueba de WiFi</string>
+    <string name="wifi_status_ready">Listo</string>
+    <string name="wifi_button_scan">Buscar redes cercanas</string>
+    <string name="wifi_label_nearby">Redes cercanas</string>
+    <string name="wifi_results_no_scan">Sin búsquedas todavía</string>
+    <string name="wifi_disabled">El WiFi está desactivado. Actívalo en Ajustes.</string>
+    <string name="wifi_connected_format">WiFi activado. Conectado a: %1$s</string>
+    <string name="wifi_ssid_unknown">desconocido</string>
+    <string name="wifi_status_scanning">Buscando...</string>
+    <string name="wifi_scan_failed">Solicitud de búsqueda fallida o limitada; mostrando los últimos resultados conocidos</string>
+    <string name="wifi_no_networks">No se encontraron redes</string>
+    <string name="wifi_ssid_hidden">(oculta)</string>
+    <string name="wifi_result_line_format">%1$s  (%2$d dBm)\n</string>
+
+    <!-- Bluetooth test -->
+    <string name="bt_title">Prueba de Bluetooth</string>
+    <string name="bt_status_ready">Listo</string>
+    <string name="bt_button_enable">Activar Bluetooth</string>
+    <string name="bt_button_scan">Buscar dispositivos cercanos</string>
+    <string name="bt_label_paired">Dispositivos emparejados</string>
+    <string name="bt_label_discovered">Dispositivos detectados</string>
+    <string name="bt_status_scan_finished">Búsqueda finalizada</string>
+    <string name="bt_no_hardware">No hay hardware de Bluetooth en este dispositivo</string>
+    <string name="bt_already_enabled">Bluetooth ya está activado</string>
+    <string name="bt_enable_first">Activa el Bluetooth primero</string>
+    <string name="bt_status_scanning">Buscando...</string>
+    <string name="bt_permission_denied">Permiso de Bluetooth denegado</string>
+    <string name="bt_status_enabled">Bluetooth activado</string>
+    <string name="bt_status_disabled">Bluetooth desactivado</string>
+    <string name="bt_no_paired">No hay dispositivos emparejados</string>
+    <string name="bt_permission_error_format">Error de permisos: %1$s</string>
+    <string name="bt_device_unknown_name">(desconocido)</string>
+
+    <!-- NFC test -->
+    <string name="nfc_title">Prueba de NFC</string>
+    <string name="nfc_status_checking">Comprobando...</string>
+    <string name="nfc_tag_placeholder">Aún no se ha escaneado ninguna etiqueta. Acerca una etiqueta al dispositivo.</string>
+    <string name="nfc_no_hardware">No hay hardware de NFC en este dispositivo</string>
+    <string name="nfc_disabled">El NFC está apagado. Actívalo en Ajustes.</string>
+    <string name="nfc_enabled_ready">NFC activado. Acerca una etiqueta al dispositivo.</string>
+    <string name="nfc_tag_id_format">ID de etiqueta: %1$s</string>
+
+    <!-- Video test -->
+    <string name="video_title">Prueba de grabación / reproducción de video</string>
+    <string name="video_status_ready">Listo</string>
+    <string name="video_button_record">Grabar video</string>
+    <string name="video_no_camera_app">No hay ninguna app de cámara disponible</string>
+    <string name="video_status_playing_back">Video grabado, reproduciendo...</string>
+    <string name="video_status_cancelled">Grabación cancelada o fallida</string>
+
+    <!-- Phone test -->
+    <string name="phone_title">Prueba de teléfono / SMS</string>
+    <string name="phone_info_reading">Leyendo información de telefonía...</string>
+    <string name="phone_disclaimer">Estos botones solo abren la app de marcado / SMS con un borrador. No se envía nada automáticamente; tú confirmas y lo envías.</string>
+    <string name="phone_button_dialer">Abrir marcador (probar una llamada)</string>
+    <string name="phone_button_sms">Abrir redacción de SMS (probar un mensaje)</string>
+    <string name="phone_signal_level_format">Nivel de señal: %1$d / 4</string>
+    <string name="phone_signal_asu_format">Señal (ASU): %1$d / 31</string>
+    <string name="phone_signal_default">Señal: -</string>
+    <string name="phone_no_dialer_app">No se encontró ninguna app de marcado</string>
+    <string name="phone_sms_draft_body">QApp ROM Tester: mensaje de prueba SMS</string>
+    <string name="phone_no_sms_app">No se encontró ninguna app de SMS</string>
+    <string name="phone_info_format">Estado de SIM: %1$s\nTipo de teléfono: %2$s\nTipo de red: %3$s\nOperador: %4$s\n%5$s</string>
+    <string name="phone_sim_absent">Sin SIM</string>
+    <string name="phone_sim_ready">Lista</string>
+    <string name="phone_sim_pin_required">Se requiere PIN</string>
+    <string name="phone_sim_puk_required">Se requiere PUK</string>
+    <string name="phone_sim_network_locked">Red bloqueada</string>
+    <string name="phone_sim_unknown">Desconocido</string>
+    <string name="phone_type_gsm">GSM</string>
+    <string name="phone_type_cdma">CDMA</string>
+    <string name="phone_type_sip">SIP</string>
+    <string name="phone_type_none">Ninguno</string>
+    <string name="phone_network_gprs">GPRS</string>
+    <string name="phone_network_edge">EDGE</string>
+    <string name="phone_network_umts">UMTS</string>
+    <string name="phone_network_hsdpa">HSDPA</string>
+    <string name="phone_network_hsupa">HSUPA</string>
+    <string name="phone_network_hspa">HSPA</string>
+    <string name="phone_network_hspap">HSPA+</string>
+    <string name="phone_network_lte">LTE</string>
+    <string name="phone_network_cdma">CDMA</string>
+    <string name="phone_network_evdo">EVDO</string>
+    <string name="phone_network_unknown">Desconocido</string>
+
+    <!-- Settings shortcuts -->
+    <string name="settings_title">Ajustes de anclaje / modo USB</string>
+    <string name="settings_tethering_desc">Esto no se puede probar desde dentro de una app, así que estos botones simplemente te llevan a la pantalla de ajustes del sistema correspondiente.</string>
+    <string name="settings_button_tethering">Abrir ajustes de anclaje WiFi / USB</string>
+    <string name="settings_usb_desc">Para MTP/PTP: conecta el cable USB, desliza hacia abajo la barra de notificaciones y toca la notificación de USB para elegir el modo de conexión.</string>
+    <string name="settings_button_open_settings">Abrir Ajustes generales</string>
+</resources>

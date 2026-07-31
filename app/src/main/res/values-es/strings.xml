@@ -15,6 +15,7 @@
     <string name="main_button_screen_test">Prueba de pantalla / píxeles muertos</string>
     <string name="main_button_sensor_test">Prueba de sensores</string>
     <string name="main_button_multitouch_test">Prueba multitáctil</string>
+    <string name="main_button_buttons_test">Prueba de botones físicos / virtuales</string>
     <string name="main_button_device_info">Información de dispositivo / batería / red</string>
     <string name="main_section_media">Multimedia</string>
     <string name="main_button_camera_test">Prueba de cámara / linterna</string>
@@ -265,6 +266,7 @@
     <string name="robot_check_device_info">Info del dispositivo</string>
     <string name="robot_check_microphone">Micrófono</string>
     <string name="robot_check_multitouch">Multitáctil</string>
+    <string name="robot_check_buttons">Botones físicos / virtuales</string>
     <string name="robot_check_gps">GPS</string>
     <string name="robot_check_wifi">WiFi</string>
     <string name="robot_check_bluetooth">Bluetooth</string>
@@ -280,6 +282,7 @@
     <string name="robot_detail_manual_touch">Abre \"Prueba de sonido / vibración / táctil\" y confírmalo tocando</string>
     <string name="robot_detail_manual_screen">Abre \"Prueba de pantalla / píxeles muertos\" y revisa cada color a simple vista</string>
     <string name="robot_detail_manual_multitouch">Abre \"Prueba multitáctil\" y compruébalo con varios dedos</string>
+    <string name="robot_detail_manual_buttons">Abre \"Prueba de botones físicos / virtuales\" y presiona cada botón</string>
     <string name="robot_detail_sensor_reading_format">Lectura recibida: %1$s</string>
     <string name="robot_detail_sensor_no_reading">El sensor está presente pero no llegó ninguna lectura a tiempo</string>
     <string name="robot_detail_sensor_not_present">No presente en este dispositivo</string>
@@ -338,4 +341,23 @@
     <!-- OpenGL test -->
     <string name="opengl_status_initializing">Inicializando OpenGL...</string>
     <string name="opengl_info_format">Versión GLES: %1$s\nRenderer: %2$s\nProveedor: %3$s\nFPS: %4$d</string>
+
+    <!-- Buttons test -->
+    <string name="buttons_title">Prueba de botones físicos / virtuales</string>
+    <string name="buttons_instructions">Presiona cada botón físico (volumen, atrás, menú, cámara/foco, buscar) y se marcará abajo. Cualquier otra tecla también aparece en el registro.</string>
+    <string name="buttons_button_exit">Salir de la prueba</string>
+    <string name="buttons_log_label">Registro de eventos</string>
+    <string name="buttons_tag_down">ABAJO</string>
+    <string name="buttons_tag_up">ARRIBA</string>
+    <string name="buttons_key_volume_up">Subir volumen</string>
+    <string name="buttons_key_volume_down">Bajar volumen</string>
+    <string name="buttons_key_back">Atrás</string>
+    <string name="buttons_key_menu">Menú</string>
+    <string name="buttons_key_camera">Cámara</string>
+    <string name="buttons_key_focus">Foco de cámara</string>
+    <string name="buttons_key_search">Buscar</string>
+    <string name="buttons_key_unknown_format">Código de tecla %1$d</string>
+    <string name="buttons_key_home">Inicio / Apps recientes</string>
+    <string name="buttons_tag_detected">DETECTADO</string>
+    <string name="buttons_note_home_power">Inicio y Encendido no se pueden capturar desde ninguna app — Android los reserva para el sistema. Inicio se marcará aquí la próxima vez que abras esta pantalla después de presionarlo; Encendido no se puede probar en absoluto.</string>
 </resources>

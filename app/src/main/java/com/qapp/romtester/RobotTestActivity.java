@@ -399,6 +399,13 @@ public class RobotTestActivity extends Activity implements View.OnClickListener 
             }
         });
 
+        checks.add(new Check(R.string.robot_check_buttons) {
+            @Override
+            void run(Callback cb) {
+                cb.done(Status.MANUAL, getString(R.string.robot_detail_manual_buttons));
+            }
+        });
+
         checks.add(new Check(R.string.robot_check_gps) {
             @Override
             @SuppressWarnings("deprecation")

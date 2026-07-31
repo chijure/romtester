@@ -17,6 +17,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
             {R.id.button_device_info, DeviceInfoActivity.class},
             {R.id.button_microphone_test, MicrophoneTestActivity.class},
             {R.id.button_multitouch_test, MultitouchTestActivity.class},
+            {R.id.button_buttons_test, ButtonsTestActivity.class},
             {R.id.button_location_test, LocationTestActivity.class},
             {R.id.button_wifi_test, WifiTestActivity.class},
             {R.id.button_bluetooth_test, BluetoothTestActivity.class},

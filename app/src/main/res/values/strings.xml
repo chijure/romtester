@@ -15,6 +15,7 @@
     <string name="main_button_screen_test">Screen / dead pixel test</string>
     <string name="main_button_sensor_test">Sensor test</string>
     <string name="main_button_multitouch_test">Multitouch test</string>
+    <string name="main_button_buttons_test">Physical / virtual buttons test</string>
     <string name="main_button_device_info">Device / battery / network info</string>
     <string name="main_section_media">Media</string>
     <string name="main_button_camera_test">Camera / flashlight test</string>
@@ -265,6 +266,7 @@
     <string name="robot_check_device_info">Device info</string>
     <string name="robot_check_microphone">Microphone</string>
     <string name="robot_check_multitouch">Multitouch</string>
+    <string name="robot_check_buttons">Physical / virtual buttons</string>
     <string name="robot_check_gps">GPS</string>
     <string name="robot_check_wifi">WiFi</string>
     <string name="robot_check_bluetooth">Bluetooth</string>
@@ -280,6 +282,7 @@
     <string name="robot_detail_manual_touch">Open \"Sound / vibration / touch test\" and confirm by touch</string>
     <string name="robot_detail_manual_screen">Open \"Screen / dead pixel test\" and check each color by eye</string>
     <string name="robot_detail_manual_multitouch">Open \"Multitouch test\" and check with multiple fingers</string>
+    <string name="robot_detail_manual_buttons">Open \"Physical / virtual buttons test\" and press each button</string>
     <string name="robot_detail_sensor_reading_format">Reading received: %1$s</string>
     <string name="robot_detail_sensor_no_reading">Sensor present but no reading arrived in time</string>
     <string name="robot_detail_sensor_not_present">Not present on this device</string>
@@ -338,4 +341,23 @@
     <!-- OpenGL test -->
     <string name="opengl_status_initializing">Initializing OpenGL...</string>
     <string name="opengl_info_format">GLES version: %1$s\nRenderer: %2$s\nVendor: %3$s\nFPS: %4$d</string>
+
+    <!-- Buttons test -->
+    <string name="buttons_title">Physical / virtual buttons test</string>
+    <string name="buttons_instructions">Press each hardware button (volume, back, menu, camera/focus, search) — it will check off below. Any other key press also shows up in the log.</string>
+    <string name="buttons_button_exit">Exit test</string>
+    <string name="buttons_log_label">Event log</string>
+    <string name="buttons_tag_down">DOWN</string>
+    <string name="buttons_tag_up">UP</string>
+    <string name="buttons_key_volume_up">Volume Up</string>
+    <string name="buttons_key_volume_down">Volume Down</string>
+    <string name="buttons_key_back">Back</string>
+    <string name="buttons_key_menu">Menu</string>
+    <string name="buttons_key_camera">Camera</string>
+    <string name="buttons_key_focus">Camera Focus</string>
+    <string name="buttons_key_search">Search</string>
+    <string name="buttons_key_unknown_format">Key code %1$d</string>
+    <string name="buttons_key_home">Home / Recent apps</string>
+    <string name="buttons_tag_detected">DETECTED</string>
+    <string name="buttons_note_home_power">Home and Power can\'t be captured by any app — Android reserves them. Home will check off here the next time you open this screen after pressing it; Power can\'t be tested at all.</string>
 </resources>

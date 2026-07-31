@@ -84,6 +84,18 @@
         <activity
             android:name=".SettingsShortcutsActivity"
             android:exported="false" />
+        <activity
+            android:name=".RobotTestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TestHistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ReportDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CompareReportsActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

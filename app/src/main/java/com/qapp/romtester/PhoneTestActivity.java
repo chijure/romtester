@@ -110,7 +110,7 @@ public class PhoneTestActivity extends Activity implements View.OnClickListener 
         String operator = telephonyManager.getNetworkOperatorName();
 
         infoText.setText(getString(R.string.phone_info_format, simState, phoneType, networkType,
-                operator == null || operator.isEmpty() ? getString(R.string.common_dash) : operator,
+                operator == null || operator.length() == 0 ? getString(R.string.common_dash) : operator,
                 signalInfo));
     }
 

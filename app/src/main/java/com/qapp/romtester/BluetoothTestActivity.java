@@ -38,7 +38,14 @@ public class BluetoothTestActivity extends Activity implements View.OnClickListe
                 BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
                 if (device != null) {
                     discoveredDevices.add(describeDevice(device));
-                    discoveredText.setText(String.join("\n", discoveredDevices));
+                    StringBuilder joined = new StringBuilder();
+                    for (String entry : discoveredDevices) {
+                        if (joined.length() > 0) {
+                            joined.append("\n");
+                        }
+                        joined.append(entry);
+                    }
+                    discoveredText.setText(joined.toString());
                 }
             } else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {
                 statusText.setText(getString(R.string.bt_status_scan_finished));
@@ -62,7 +69,11 @@ public class BluetoothTestActivity extends Activity implements View.OnClickListe
         IntentFilter filter = new IntentFilter();
         filter.addAction(BluetoothDevice.ACTION_FOUND);
         filter.addAction(BluetoothAdapter.ACTION_DISCOVERY_FINISHED);
-        registerReceiver(receiver, filter);
+        if (Build.VERSION.SDK_INT >= 33) {
+            registerReceiver(receiver, filter, Context.RECEIVER_NOT_EXPORTED);
+        } else {
+            registerReceiver(receiver, filter);
+        }
 
         refreshStatus();
     }

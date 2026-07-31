@@ -8,6 +8,8 @@
     <!-- Main -->
     <string name="main_title">Probador de hardware ROM</string>
     <string name="main_subtitle">Elige una prueba</string>
+    <string name="main_button_robot_test">Ejecutar todas las pruebas (auto)</string>
+    <string name="main_button_test_history">Historial de pruebas</string>
     <string name="main_section_basics">Básico</string>
     <string name="main_button_io_test">Prueba de sonido / vibración / táctil</string>
     <string name="main_button_screen_test">Prueba de pantalla / píxeles muertos</string>
@@ -233,4 +235,103 @@
     <string name="settings_button_tethering">Abrir ajustes de anclaje WiFi / USB</string>
     <string name="settings_usb_desc">Para MTP/PTP: conecta el cable USB, desliza hacia abajo la barra de notificaciones y toca la notificación de USB para elegir el modo de conexión.</string>
     <string name="settings_button_open_settings">Abrir Ajustes generales</string>
+
+    <!-- Robot test -->
+    <string name="robot_title">Prueba automática</string>
+    <string name="robot_intro">Ejecuta todas las pruebas que se pueden verificar automáticamente y te da un resumen de aprobado/fallido. Tocar la pantalla, ver los colores, el multitáctil y leer una etiqueta NFC necesitan que tú mires o toques, así que esas se marcan como manuales.</string>
+    <string name="robot_button_run">Ejecutar todas las pruebas</string>
+    <string name="robot_button_running">Ejecutando...</string>
+    <string name="robot_button_run_again">Ejecutar de nuevo</string>
+    <string name="robot_button_share">Compartir informe</string>
+    <string name="robot_running_format">Ejecutando prueba %1$d / %2$d...</string>
+    <string name="robot_summary_format">%1$d aprobadas, %2$d fallidas, %3$d no aplican, %4$d requieren revisión manual</string>
+    <string name="robot_tag_pass">OK</string>
+    <string name="robot_tag_fail">FALLO</string>
+    <string name="robot_tag_na">N/D</string>
+    <string name="robot_tag_manual">MANUAL</string>
+    <string name="robot_share_subject">Informe de QApp ROM Tester</string>
+    <string name="robot_share_header_format">QApp ROM Tester — %1$s (Android %2$s)\n%3$d aprobadas, %4$d fallidas, %5$d no aplican, %6$d manuales\n\n</string>
+
+    <string name="robot_check_sound">Sonido</string>
+    <string name="robot_check_vibration">Vibración</string>
+    <string name="robot_check_touch">Táctil</string>
+    <string name="robot_check_screen">Pantalla / píxeles muertos</string>
+    <string name="robot_check_accelerometer">Acelerómetro</string>
+    <string name="robot_check_gyroscope">Giroscopio</string>
+    <string name="robot_check_magnetic">Campo magnético</string>
+    <string name="robot_check_light">Sensor de luz</string>
+    <string name="robot_check_proximity">Sensor de proximidad</string>
+    <string name="robot_check_camera">Cámara</string>
+    <string name="robot_check_device_info">Info del dispositivo</string>
+    <string name="robot_check_microphone">Micrófono</string>
+    <string name="robot_check_multitouch">Multitáctil</string>
+    <string name="robot_check_gps">GPS</string>
+    <string name="robot_check_wifi">WiFi</string>
+    <string name="robot_check_bluetooth">Bluetooth</string>
+    <string name="robot_check_nfc">NFC</string>
+    <string name="robot_check_opengl">OpenGL</string>
+    <string name="robot_check_video">Códec de video por hardware</string>
+    <string name="robot_check_phone">Teléfono / SIM</string>
+
+    <string name="robot_detail_sound_played">Pitido reproducido con ToneGenerator</string>
+    <string name="robot_detail_sound_failed">Generador de tonos no disponible</string>
+    <string name="robot_detail_vibration_triggered">Motor de vibración activado</string>
+    <string name="robot_detail_no_vibrator">No hay motor de vibración en este dispositivo</string>
+    <string name="robot_detail_manual_touch">Abre \"Prueba de sonido / vibración / táctil\" y confírmalo tocando</string>
+    <string name="robot_detail_manual_screen">Abre \"Prueba de pantalla / píxeles muertos\" y revisa cada color a simple vista</string>
+    <string name="robot_detail_manual_multitouch">Abre \"Prueba multitáctil\" y compruébalo con varios dedos</string>
+    <string name="robot_detail_sensor_reading_format">Lectura recibida: %1$s</string>
+    <string name="robot_detail_sensor_no_reading">El sensor está presente pero no llegó ninguna lectura a tiempo</string>
+    <string name="robot_detail_sensor_not_present">No presente en este dispositivo</string>
+    <string name="robot_detail_camera_present_format">Cámara presente (flash: %1$s) — abre la prueba de Cámara para capturar una foto</string>
+    <string name="robot_detail_camera_not_present">No hay hardware de cámara</string>
+    <string name="robot_detail_yes">sí</string>
+    <string name="robot_detail_no">no</string>
+    <string name="robot_detail_device_info_format">%1$s, Android %2$s, batería %3$d%%, %4$.0f MB libres</string>
+    <string name="robot_detail_mic_recorded_format">Se grabaron %1$d KB de audio</string>
+    <string name="robot_detail_mic_no_data">La grabación no produjo datos de audio</string>
+    <string name="robot_detail_mic_permission">Permiso de micrófono no concedido</string>
+    <string name="robot_detail_gps_fix_format">Posición recibida: %1$.5f, %2$.5f</string>
+    <string name="robot_detail_gps_no_fix">Sin posición en 8s — inténtalo de nuevo al aire libre</string>
+    <string name="robot_detail_gps_disabled">El GPS está apagado — actívalo en Ajustes</string>
+    <string name="robot_detail_gps_permission">Permiso de ubicación no concedido</string>
+    <string name="robot_detail_gps_not_present">No hay hardware de GPS</string>
+    <string name="robot_detail_wifi_networks_format">%1$d redes encontradas cerca</string>
+    <string name="robot_detail_wifi_no_networks">No se encontraron redes cerca</string>
+    <string name="robot_detail_wifi_disabled">El WiFi está apagado — actívalo en Ajustes</string>
+    <string name="robot_detail_wifi_permission">Se necesita permiso de ubicación para los resultados de búsqueda</string>
+    <string name="robot_detail_wifi_not_present">No hay hardware de WiFi</string>
+    <string name="robot_detail_bt_devices_format">%1$d emparejados, %2$d detectados cerca</string>
+    <string name="robot_detail_bt_disabled">El Bluetooth está apagado — actívalo en Ajustes</string>
+    <string name="robot_detail_bt_permission">Permiso de Bluetooth no concedido</string>
+    <string name="robot_detail_bt_not_present">No hay hardware de Bluetooth</string>
+    <string name="robot_detail_nfc_enabled">NFC activado — abre la prueba de NFC y acerca una etiqueta para verificarlo del todo</string>
+    <string name="robot_detail_nfc_disabled">El NFC está apagado — actívalo en Ajustes</string>
+    <string name="robot_detail_nfc_not_present">No hay hardware de NFC</string>
+    <string name="robot_detail_opengl_format">Versión de GLES %1$s</string>
+    <string name="robot_detail_video_codec_found">Códec H.264 por hardware disponible</string>
+    <string name="robot_detail_video_codec_missing">No se encontró códec H.264</string>
+    <string name="robot_detail_video_not_present">No hay hardware de cámara para video</string>
+    <string name="robot_detail_phone_ready_format">SIM lista, operador: %1$s</string>
+    <string name="robot_detail_phone_not_ready">Sin SIM o SIM no lista</string>
+    <string name="robot_detail_phone_permission">Permiso de teléfono no concedido</string>
+    <string name="robot_detail_phone_not_present">No hay hardware de telefonía</string>
+
+    <!-- Test history -->
+    <string name="history_title">Historial de pruebas</string>
+    <string name="history_button_compare">Comparar las últimas dos</string>
+    <string name="history_button_clear">Borrar todo</string>
+    <string name="history_button_delete">Eliminar</string>
+    <string name="history_empty">Todavía no hay pruebas guardadas. Ejecuta \"Ejecutar todas las pruebas (auto)\" para crear una.</string>
+    <string name="history_need_two">Necesitas al menos 2 pruebas guardadas para comparar</string>
+    <string name="history_confirm_delete">¿Eliminar este reporte guardado?</string>
+    <string name="history_confirm_clear">¿Borrar todo el historial de pruebas? No se puede deshacer.</string>
+
+    <!-- Report detail -->
+    <string name="report_detail_title">Detalle del reporte</string>
+    <string name="report_detail_load_error">No se pudo cargar este reporte</string>
+
+    <!-- Compare reports -->
+    <string name="compare_title">Comparar pruebas</string>
+    <string name="compare_header_format">Más reciente: %1$s\nAnterior: %2$s</string>
 </resources>

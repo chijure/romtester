@@ -8,6 +8,8 @@
     <!-- Main -->
     <string name="main_title">ROM Hardware Tester</string>
     <string name="main_subtitle">Choose a test</string>
+    <string name="main_button_robot_test">Run all tests (auto)</string>
+    <string name="main_button_test_history">Test history</string>
     <string name="main_section_basics">Basics</string>
     <string name="main_button_io_test">Sound / vibration / touch test</string>
     <string name="main_button_screen_test">Screen / dead pixel test</string>
@@ -233,4 +235,103 @@
     <string name="settings_button_tethering">Open WiFi / USB tethering settings</string>
     <string name="settings_usb_desc">For MTP/PTP: plug in the USB cable, pull down the notification shade, and tap the USB notification to choose the connection mode.</string>
     <string name="settings_button_open_settings">Open general Settings</string>
+
+    <!-- Robot test -->
+    <string name="robot_title">Automatic test run</string>
+    <string name="robot_intro">Runs every test that can be checked automatically and gives you a pass/fail summary. Touch, screen colors, multitouch and NFC tag reading need you to look or tap, so those are marked as manual.</string>
+    <string name="robot_button_run">Run all tests</string>
+    <string name="robot_button_running">Running...</string>
+    <string name="robot_button_run_again">Run again</string>
+    <string name="robot_button_share">Share report</string>
+    <string name="robot_running_format">Running check %1$d / %2$d...</string>
+    <string name="robot_summary_format">%1$d passed, %2$d failed, %3$d not applicable, %4$d need manual check</string>
+    <string name="robot_tag_pass">OK</string>
+    <string name="robot_tag_fail">FAIL</string>
+    <string name="robot_tag_na">N/A</string>
+    <string name="robot_tag_manual">MANUAL</string>
+    <string name="robot_share_subject">QApp ROM Tester report</string>
+    <string name="robot_share_header_format">QApp ROM Tester — %1$s (Android %2$s)\n%3$d passed, %4$d failed, %5$d not applicable, %6$d manual\n\n</string>
+
+    <string name="robot_check_sound">Sound</string>
+    <string name="robot_check_vibration">Vibration</string>
+    <string name="robot_check_touch">Touch</string>
+    <string name="robot_check_screen">Screen / dead pixels</string>
+    <string name="robot_check_accelerometer">Accelerometer</string>
+    <string name="robot_check_gyroscope">Gyroscope</string>
+    <string name="robot_check_magnetic">Magnetic field</string>
+    <string name="robot_check_light">Light sensor</string>
+    <string name="robot_check_proximity">Proximity sensor</string>
+    <string name="robot_check_camera">Camera</string>
+    <string name="robot_check_device_info">Device info</string>
+    <string name="robot_check_microphone">Microphone</string>
+    <string name="robot_check_multitouch">Multitouch</string>
+    <string name="robot_check_gps">GPS</string>
+    <string name="robot_check_wifi">WiFi</string>
+    <string name="robot_check_bluetooth">Bluetooth</string>
+    <string name="robot_check_nfc">NFC</string>
+    <string name="robot_check_opengl">OpenGL</string>
+    <string name="robot_check_video">Video hardware codec</string>
+    <string name="robot_check_phone">Phone / SIM</string>
+
+    <string name="robot_detail_sound_played">Beep played through ToneGenerator</string>
+    <string name="robot_detail_sound_failed">Tone generator unavailable</string>
+    <string name="robot_detail_vibration_triggered">Vibration motor triggered</string>
+    <string name="robot_detail_no_vibrator">No vibration motor on this device</string>
+    <string name="robot_detail_manual_touch">Open \"Sound / vibration / touch test\" and confirm by touch</string>
+    <string name="robot_detail_manual_screen">Open \"Screen / dead pixel test\" and check each color by eye</string>
+    <string name="robot_detail_manual_multitouch">Open \"Multitouch test\" and check with multiple fingers</string>
+    <string name="robot_detail_sensor_reading_format">Reading received: %1$s</string>
+    <string name="robot_detail_sensor_no_reading">Sensor present but no reading arrived in time</string>
+    <string name="robot_detail_sensor_not_present">Not present on this device</string>
+    <string name="robot_detail_camera_present_format">Camera present (flash: %1$s) — open Camera test to capture a photo</string>
+    <string name="robot_detail_camera_not_present">No camera hardware</string>
+    <string name="robot_detail_yes">yes</string>
+    <string name="robot_detail_no">no</string>
+    <string name="robot_detail_device_info_format">%1$s, Android %2$s, battery %3$d%%, %4$.0f MB free</string>
+    <string name="robot_detail_mic_recorded_format">Recorded %1$d KB of audio</string>
+    <string name="robot_detail_mic_no_data">Recording produced no audio data</string>
+    <string name="robot_detail_mic_permission">Microphone permission not granted</string>
+    <string name="robot_detail_gps_fix_format">Fix received: %1$.5f, %2$.5f</string>
+    <string name="robot_detail_gps_no_fix">No fix within 8s — try again outdoors</string>
+    <string name="robot_detail_gps_disabled">GPS is turned off — enable it in Settings</string>
+    <string name="robot_detail_gps_permission">Location permission not granted</string>
+    <string name="robot_detail_gps_not_present">No GPS hardware</string>
+    <string name="robot_detail_wifi_networks_format">%1$d networks found nearby</string>
+    <string name="robot_detail_wifi_no_networks">No networks found nearby</string>
+    <string name="robot_detail_wifi_disabled">WiFi is turned off — enable it in Settings</string>
+    <string name="robot_detail_wifi_permission">Location permission needed for scan results</string>
+    <string name="robot_detail_wifi_not_present">No WiFi hardware</string>
+    <string name="robot_detail_bt_devices_format">%1$d paired, %2$d discovered nearby</string>
+    <string name="robot_detail_bt_disabled">Bluetooth is turned off — enable it in Settings</string>
+    <string name="robot_detail_bt_permission">Bluetooth permission not granted</string>
+    <string name="robot_detail_bt_not_present">No Bluetooth hardware</string>
+    <string name="robot_detail_nfc_enabled">NFC enabled — open NFC test and tap a tag to fully verify</string>
+    <string name="robot_detail_nfc_disabled">NFC is turned off — enable it in Settings</string>
+    <string name="robot_detail_nfc_not_present">No NFC hardware</string>
+    <string name="robot_detail_opengl_format">GLES version %1$s</string>
+    <string name="robot_detail_video_codec_found">Hardware H.264 codec available</string>
+    <string name="robot_detail_video_codec_missing">No H.264 codec found</string>
+    <string name="robot_detail_video_not_present">No camera hardware for video</string>
+    <string name="robot_detail_phone_ready_format">SIM ready, operator: %1$s</string>
+    <string name="robot_detail_phone_not_ready">No SIM or SIM not ready</string>
+    <string name="robot_detail_phone_permission">Phone permission not granted</string>
+    <string name="robot_detail_phone_not_present">No telephony hardware</string>
+
+    <!-- Test history -->
+    <string name="history_title">Test history</string>
+    <string name="history_button_compare">Compare last two</string>
+    <string name="history_button_clear">Clear all</string>
+    <string name="history_button_delete">Delete</string>
+    <string name="history_empty">No saved test runs yet. Run \"Run all tests (auto)\" to create one.</string>
+    <string name="history_need_two">You need at least 2 saved runs to compare</string>
+    <string name="history_confirm_delete">Delete this saved report?</string>
+    <string name="history_confirm_clear">Delete all saved test history? This cannot be undone.</string>
+
+    <!-- Report detail -->
+    <string name="report_detail_title">Report detail</string>
+    <string name="report_detail_load_error">Could not load this report</string>
+
+    <!-- Compare reports -->
+    <string name="compare_title">Compare runs</string>
+    <string name="compare_header_format">Newest: %1$s\nPrevious: %2$s</string>
 </resources>

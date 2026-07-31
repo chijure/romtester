@@ -73,7 +73,9 @@ public class InputOutputTestActivity extends Activity implements View.OnClickLis
     }
 
     private void runVibrationTest() {
-        if (vibrator == null || !vibrator.hasVibrator()) {
+        boolean hasVibrator = vibrator != null
+                && (Build.VERSION.SDK_INT < 11 || vibrator.hasVibrator());
+        if (!hasVibrator) {
             updateStatus(getString(R.string.io_status_vibration_no_vibrator));
             return;
         }

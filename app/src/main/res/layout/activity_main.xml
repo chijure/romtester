@@ -40,10 +40,31 @@
             android:orientation="vertical"
             android:padding="16dp">
 
+            <Button
+                android:id="@+id/button_robot_test"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_bg_accent"
+                android:drawableLeft="@android:drawable/ic_menu_rotate"
+                android:drawablePadding="12dp"
+                android:gravity="center_vertical|left"
+                android:text="@string/main_button_robot_test" />
+
+            <Button
+                android:id="@+id/button_test_history"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:drawableLeft="@android:drawable/ic_menu_recent_history"
+                android:drawablePadding="12dp"
+                android:gravity="center_vertical|left"
+                android:text="@string/main_button_test_history" />
+
             <TextView
                 style="@style/SectionLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
                 android:text="@string/main_section_basics" />
 
             <Button

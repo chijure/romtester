@@ -43,7 +43,12 @@ public class WifiTestActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.button_wifi_scan).setOnClickListener(this);
 
         wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-        registerReceiver(scanReceiver, new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
+        IntentFilter scanFilter = new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION);
+        if (Build.VERSION.SDK_INT >= 33) {
+            registerReceiver(scanReceiver, scanFilter, Context.RECEIVER_NOT_EXPORTED);
+        } else {
+            registerReceiver(scanReceiver, scanFilter);
+        }
 
         refreshStatus();
     }
@@ -104,7 +109,7 @@ public class WifiTestActivity extends Activity implements View.OnClickListener {
 
         StringBuilder sb = new StringBuilder();
         for (ScanResult result : results) {
-            String ssid = result.SSID == null || result.SSID.isEmpty() ? getString(R.string.wifi_ssid_hidden) : result.SSID;
+            String ssid = result.SSID == null || result.SSID.length() == 0 ? getString(R.string.wifi_ssid_hidden) : result.SSID;
             sb.append(String.format(Locale.US, getString(R.string.wifi_result_line_format), ssid, result.level));
         }
         resultsText.setText(sb.toString().trim());

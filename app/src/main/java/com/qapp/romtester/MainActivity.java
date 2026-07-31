@@ -8,6 +8,8 @@ import android.view.View;
 public class MainActivity extends Activity implements View.OnClickListener {
 
     private static final Object[][] MENU_ITEMS = {
+            {R.id.button_robot_test, RobotTestActivity.class},
+            {R.id.button_test_history, TestHistoryActivity.class},
             {R.id.button_io_test, InputOutputTestActivity.class},
             {R.id.button_screen_test, ScreenTestActivity.class},
             {R.id.button_sensor_test, SensorTestActivity.class},

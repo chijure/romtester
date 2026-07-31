@@ -334,4 +334,8 @@
     <!-- Compare reports -->
     <string name="compare_title">Comparar pruebas</string>
     <string name="compare_header_format">Más reciente: %1$s\nAnterior: %2$s</string>
+
+    <!-- OpenGL test -->
+    <string name="opengl_status_initializing">Inicializando OpenGL...</string>
+    <string name="opengl_info_format">Versión GLES: %1$s\nRenderer: %2$s\nProveedor: %3$s\nFPS: %4$d</string>
 </resources>

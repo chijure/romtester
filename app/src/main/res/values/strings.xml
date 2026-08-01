@@ -33,6 +33,7 @@
 
     <!-- IO test -->
     <string name="io_title">Sound / vibration / touch test</string>
+    <string name="io_section_sound_vibration">Sound &amp; vibration</string>
     <string name="io_status_placeholder">Status</string>
     <string name="io_button_sound">Test Sound</string>
     <string name="io_button_vibrate">Test Vibration</string>

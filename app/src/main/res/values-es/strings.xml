@@ -33,6 +33,7 @@
 
     <!-- IO test -->
     <string name="io_title">Prueba de sonido / vibración / táctil</string>
+    <string name="io_section_sound_vibration">Sonido y vibración</string>
     <string name="io_status_placeholder">Estado</string>
     <string name="io_button_sound">Probar sonido</string>
     <string name="io_button_vibrate">Probar vibración</string>

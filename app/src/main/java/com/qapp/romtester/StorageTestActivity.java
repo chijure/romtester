@@ -26,9 +26,9 @@ import java.util.Random;
 public class StorageTestActivity extends Activity {
 
     private static final int BUFFER_SIZE = 256 * 1024;
-    private static final long MIN_FILE_SIZE = 16L * 1024 * 1024;
-    private static final long MAX_FILE_SIZE = 512L * 1024 * 1024;
-    private static final int DESIRED_FILE_COUNT = 128;
+    static final long MIN_FILE_SIZE = 16L * 1024 * 1024;
+    static final long MAX_FILE_SIZE = 512L * 1024 * 1024;
+    static final int DESIRED_FILE_COUNT = 128;
     private static final long MIN_SAFETY_MARGIN_BYTES = 100L * 1024 * 1024;
     private static final double SAFETY_MARGIN_FRACTION = 0.03;
     private static final long MIN_TEST_BYTES = 32L * 1024 * 1024;
@@ -204,7 +204,7 @@ public class StorageTestActivity extends Activity {
         return volumes;
     }
 
-    private static long computeFileSize(long target) {
+    static long computeFileSize(long target) {
         long size = target / DESIRED_FILE_COUNT;
         if (size < MIN_FILE_SIZE) {
             size = MIN_FILE_SIZE;
@@ -215,7 +215,7 @@ public class StorageTestActivity extends Activity {
         return size;
     }
 
-    private static int readFully(InputStream in, byte[] buf, int len) throws IOException {
+    static int readFully(InputStream in, byte[] buf, int len) throws IOException {
         int total = 0;
         while (total < len) {
             int r = in.read(buf, total, len - total);
@@ -227,7 +227,7 @@ public class StorageTestActivity extends Activity {
         return total;
     }
 
-    private static boolean regionsEqual(byte[] a, byte[] b, int len) {
+    static boolean regionsEqual(byte[] a, byte[] b, int len) {
         for (int i = 0; i < len; i++) {
             if (a[i] != b[i]) {
                 return false;

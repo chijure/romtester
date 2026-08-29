@@ -1,31 +1,26 @@
 package com.qapp.romtester;
 
 import android.app.Activity;
-import android.content.Context;
 import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.widget.TextView;
 
 import java.util.Locale;
 
-public class SensorTestActivity extends Activity implements SensorEventListener {
+public class SensorTestActivity extends Activity {
 
-    private SensorManager sensorManager;
-
-    private Sensor accelerometer;
-    private Sensor gyroscope;
-    private Sensor magneticField;
-    private Sensor light;
-    private Sensor proximity;
+    private static final int[] TRACKED_TYPES = {
+            Sensor.TYPE_ACCELEROMETER, Sensor.TYPE_GYROSCOPE, Sensor.TYPE_MAGNETIC_FIELD,
+            Sensor.TYPE_LIGHT, Sensor.TYPE_PROXIMITY
+    };
 
     private TextView accelerometerText;
     private TextView gyroscopeText;
     private TextView magneticText;
     private TextView lightText;
     private TextView proximityText;
+
+    private SensorTester tester;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,66 +33,51 @@ public class SensorTestActivity extends Activity implements SensorEventListener 
         lightText = findViewById(R.id.text_light);
         proximityText = findViewById(R.id.text_proximity);
 
-        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        accelerometer = getSensor(Sensor.TYPE_ACCELEROMETER, accelerometerText);
-        gyroscope = getSensor(Sensor.TYPE_GYROSCOPE, gyroscopeText);
-        magneticField = getSensor(Sensor.TYPE_MAGNETIC_FIELD, magneticText);
-        light = getSensor(Sensor.TYPE_LIGHT, lightText);
-        proximity = getSensor(Sensor.TYPE_PROXIMITY, proximityText);
+        tester = new SensorTester(this, TRACKED_TYPES, new SensorTester.Listener() {
+            @Override
+            public void onReading(int sensorType, float[] values) {
+                textViewFor(sensorType).setText(formatReading(sensorType, values));
+            }
+
+            @Override
+            public void onSensorUnavailable(int sensorType) {
+                textViewFor(sensorType).setText(getString(R.string.sensor_not_available));
+            }
+        });
     }
 
-    private Sensor getSensor(int type, TextView statusText) {
-        Sensor sensor = sensorManager.getDefaultSensor(type);
-        if (sensor == null) {
-            statusText.setText(getString(R.string.sensor_not_available));
+    private TextView textViewFor(int sensorType) {
+        if (sensorType == Sensor.TYPE_ACCELEROMETER) {
+            return accelerometerText;
+        } else if (sensorType == Sensor.TYPE_GYROSCOPE) {
+            return gyroscopeText;
+        } else if (sensorType == Sensor.TYPE_MAGNETIC_FIELD) {
+            return magneticText;
+        } else if (sensorType == Sensor.TYPE_LIGHT) {
+            return lightText;
+        } else {
+            return proximityText;
         }
-        return sensor;
+    }
+
+    private String formatReading(int sensorType, float[] v) {
+        if (sensorType == Sensor.TYPE_LIGHT) {
+            return String.format(Locale.US, getString(R.string.sensor_light_format), v[0]);
+        } else if (sensorType == Sensor.TYPE_PROXIMITY) {
+            return String.format(Locale.US, getString(R.string.sensor_proximity_format), v[0]);
+        }
+        return String.format(Locale.US, getString(R.string.sensor_xyz_format), v[0], v[1], v[2]);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        registerIfAvailable(accelerometer);
-        registerIfAvailable(gyroscope);
-        registerIfAvailable(magneticField);
-        registerIfAvailable(light);
-        registerIfAvailable(proximity);
-    }
-
-    private void registerIfAvailable(Sensor sensor) {
-        if (sensor != null) {
-            sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_UI);
-        }
+        tester.start();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        sensorManager.unregisterListener(this);
-    }
-
-    @Override
-    public void onSensorChanged(SensorEvent event) {
-        int type = event.sensor.getType();
-        float[] v = event.values;
-        if (type == Sensor.TYPE_ACCELEROMETER) {
-            accelerometerText.setText(formatXyz(v));
-        } else if (type == Sensor.TYPE_GYROSCOPE) {
-            gyroscopeText.setText(formatXyz(v));
-        } else if (type == Sensor.TYPE_MAGNETIC_FIELD) {
-            magneticText.setText(formatXyz(v));
-        } else if (type == Sensor.TYPE_LIGHT) {
-            lightText.setText(String.format(Locale.US, getString(R.string.sensor_light_format), v[0]));
-        } else if (type == Sensor.TYPE_PROXIMITY) {
-            proximityText.setText(String.format(Locale.US, getString(R.string.sensor_proximity_format), v[0]));
-        }
-    }
-
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-    }
-
-    private String formatXyz(float[] v) {
-        return String.format(Locale.US, getString(R.string.sensor_xyz_format), v[0], v[1], v[2]);
+        tester.stop();
     }
 }

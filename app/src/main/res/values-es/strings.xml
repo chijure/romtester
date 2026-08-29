@@ -31,6 +31,7 @@
     <string name="main_section_telephony">Telefonía y sistema</string>
     <string name="main_button_phone_test">Prueba de teléfono / SMS</string>
     <string name="main_button_settings_shortcuts">Ajustes de anclaje / modo USB</string>
+    <string name="main_button_storage_test">Prueba de capacidad de almacenamiento (detectar almacenamiento falso)</string>
 
     <!-- IO test -->
     <string name="io_title">Prueba de sonido / vibración / táctil</string>
@@ -235,6 +236,28 @@
     <string name="phone_network_cdma">CDMA</string>
     <string name="phone_network_evdo">EVDO</string>
     <string name="phone_network_unknown">Desconocido</string>
+
+    <!-- Storage test -->
+    <string name="storage_title">Prueba de capacidad de almacenamiento</string>
+    <string name="storage_intro">Escribe datos verificables en un volumen de almacenamiento y los vuelve a leer para confirmar la capacidad real utilizable. Sirve para detectar almacenamiento falsificado que reporta más espacio del que realmente tiene. La prueba rápida termina en menos de un minuto pero solo revisa los primeros ~128 MB; la prueba completa es mucho más lenta pero revisa todo el espacio libre. Siempre se deja un margen de seguridad sin tocar para que el dispositivo no se quede completamente sin espacio.</string>
+    <string name="storage_status_scanning">Buscando volúmenes de almacenamiento...</string>
+    <string name="storage_status_ready">Elige un volumen para probar</string>
+    <string name="storage_volume_internal">Almacenamiento interno</string>
+    <string name="storage_volume_external_format">Almacenamiento externo %1$d</string>
+    <string name="storage_volume_app">Almacenamiento de la app</string>
+    <string name="storage_volume_header_format">%1$s — %2$s libres</string>
+    <string name="storage_button_quick">Prueba rápida (~128 MB)</string>
+    <string name="storage_button_full">Prueba completa (todo el espacio libre)</string>
+    <string name="storage_button_cancel">Cancelar prueba</string>
+    <string name="storage_status_insufficient_space">No hay suficiente espacio libre para ejecutar una prueba segura en este volumen</string>
+    <string name="storage_status_writing_format">Escribiendo datos de prueba: %1$s / %2$s</string>
+    <string name="storage_status_verifying_format">Verificando: %1$s / %2$s</string>
+    <string name="storage_status_cancelled">Prueba cancelada</string>
+    <string name="storage_result_ok_format">OK — %1$s escritos y verificados sin errores.\nVelocidad de escritura: %2$.1f MB/s\nVelocidad de lectura: %3$.1f MB/s</string>
+    <string name="storage_result_fake_format">FALLO — El almacenamiento parece ser falso.\nCapacidad confiable: %1$s\nDatos corruptos: %2$s en %3$d archivo(s)\nVelocidad de escritura: %4$.1f MB/s\nVelocidad de lectura: %5$.1f MB/s</string>
+    <string name="storage_result_write_error_format">La escritura se detuvo antes de tiempo después de %1$s (se esperaba llegar a %2$s): %3$s\nEsto también puede indicar almacenamiento falso.</string>
+    <string name="storage_size_gb_format">%.1f GB</string>
+    <string name="storage_size_mb_format">%.0f MB</string>
 
     <!-- Settings shortcuts -->
     <string name="settings_title">Ajustes de anclaje / modo USB</string>

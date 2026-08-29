@@ -137,6 +137,16 @@
                 android:gravity="center_vertical|left"
                 android:text="@string/main_button_device_info" />
 
+            <Button
+                android:id="@+id/button_storage_test"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:drawableLeft="@android:drawable/ic_menu_save"
+                android:drawablePadding="12dp"
+                android:gravity="center_vertical|left"
+                android:text="@string/main_button_storage_test" />
+
             <TextView
                 style="@style/SectionLabel"
                 android:layout_width="match_parent"

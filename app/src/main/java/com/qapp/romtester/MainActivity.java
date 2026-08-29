@@ -27,6 +27,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
             {R.id.button_video_test, VideoTestActivity.class},
             {R.id.button_phone_test, PhoneTestActivity.class},
             {R.id.button_settings_shortcuts, SettingsShortcutsActivity.class},
+            {R.id.button_storage_test, StorageTestActivity.class},
     };
 
     @Override

@@ -31,6 +31,7 @@
     <string name="main_section_telephony">Telephony &amp; system</string>
     <string name="main_button_phone_test">Phone / SMS test</string>
     <string name="main_button_settings_shortcuts">Tethering / USB mode settings</string>
+    <string name="main_button_storage_test">Storage capacity test (detect fake storage)</string>
 
     <!-- IO test -->
     <string name="io_title">Sound / vibration / touch test</string>
@@ -235,6 +236,28 @@
     <string name="phone_network_cdma">CDMA</string>
     <string name="phone_network_evdo">EVDO</string>
     <string name="phone_network_unknown">Unknown</string>
+
+    <!-- Storage test -->
+    <string name="storage_title">Storage capacity test</string>
+    <string name="storage_intro">Writes verifiable data to a storage volume and reads it back to confirm the real usable capacity. Useful for detecting counterfeit storage that reports more space than it actually has. The quick test finishes in under a minute but only samples the first ~128 MB; the full test is much slower but checks the entire free space. A safety margin is always left untouched so the device doesn\'t run completely out of space.</string>
+    <string name="storage_status_scanning">Scanning storage volumes...</string>
+    <string name="storage_status_ready">Choose a volume to test</string>
+    <string name="storage_volume_internal">Internal storage</string>
+    <string name="storage_volume_external_format">External storage %1$d</string>
+    <string name="storage_volume_app">App storage</string>
+    <string name="storage_volume_header_format">%1$s — %2$s free</string>
+    <string name="storage_button_quick">Quick test (~128 MB)</string>
+    <string name="storage_button_full">Full test (all free space)</string>
+    <string name="storage_button_cancel">Cancel test</string>
+    <string name="storage_status_insufficient_space">Not enough free space to run a safe test on this volume</string>
+    <string name="storage_status_writing_format">Writing test data: %1$s / %2$s</string>
+    <string name="storage_status_verifying_format">Verifying: %1$s / %2$s</string>
+    <string name="storage_status_cancelled">Test cancelled</string>
+    <string name="storage_result_ok_format">PASS — %1$s written and verified with no errors.\nWrite speed: %2$.1f MB/s\nRead speed: %3$.1f MB/s</string>
+    <string name="storage_result_fake_format">FAIL — Storage looks counterfeit.\nReliable capacity: %1$s\nCorrupted: %2$s across %3$d file(s)\nWrite speed: %4$.1f MB/s\nRead speed: %5$.1f MB/s</string>
+    <string name="storage_result_write_error_format">Writing stopped early after %1$s (expected to reach %2$s): %3$s\nThis can also indicate counterfeit storage.</string>
+    <string name="storage_size_gb_format">%.1f GB</string>
+    <string name="storage_size_mb_format">%.0f MB</string>
 
     <!-- Settings shortcuts -->
     <string name="settings_title">Tethering / USB mode settings</string>

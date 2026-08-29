@@ -38,7 +38,7 @@ public class BluetoothTestActivity extends Activity implements View.OnClickListe
         tester = new BluetoothTester(this, getString(R.string.bt_device_unknown_name), new BluetoothTester.Listener() {
             @Override
             public void onDeviceDiscovered(List<String> discoveredDescriptions) {
-                discoveredText.setText(String.join("\n", discoveredDescriptions));
+                discoveredText.setText(joinLines(discoveredDescriptions));
             }
 
             @Override
@@ -136,8 +136,19 @@ public class BluetoothTestActivity extends Activity implements View.OnClickListe
         } else if (result.devices.isEmpty()) {
             pairedText.setText(getString(R.string.bt_no_paired));
         } else {
-            pairedText.setText(String.join("\n", result.devices));
+            pairedText.setText(joinLines(result.devices));
         }
+    }
+
+    private static String joinLines(List<String> lines) {
+        StringBuilder joined = new StringBuilder();
+        for (String line : lines) {
+            if (joined.length() > 0) {
+                joined.append("\n");
+            }
+            joined.append(line);
+        }
+        return joined.toString();
     }
 
     @Override

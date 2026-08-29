@@ -1,27 +1,20 @@
 package com.qapp.romtester.connectivity;
 
 import com.qapp.romtester.R;
+import com.qapp.romtester.tester.BluetoothTester;
+import com.qapp.romtester.util.PermissionUtils;
 
 import android.Manifest;
 import android.app.Activity;
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.List;
 
 public class BluetoothTestActivity extends Activity implements View.OnClickListener {
 
-    private static final int REQUEST_ENABLE_BT = 1;
     private static final int REQUEST_CONNECT_PERM = 2;
     private static final int REQUEST_SCAN_PERM = 3;
 
@@ -29,31 +22,7 @@ public class BluetoothTestActivity extends Activity implements View.OnClickListe
     private TextView pairedText;
     private TextView discoveredText;
 
-    private BluetoothAdapter adapter;
-    private final Set<String> discoveredDevices = new LinkedHashSet<>();
-
-    private final BroadcastReceiver receiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
-            if (BluetoothDevice.ACTION_FOUND.equals(action)) {
-                BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-                if (device != null) {
-                    discoveredDevices.add(describeDevice(device));
-                    StringBuilder joined = new StringBuilder();
-                    for (String entry : discoveredDevices) {
-                        if (joined.length() > 0) {
-                            joined.append("\n");
-                        }
-                        joined.append(entry);
-                    }
-                    discoveredText.setText(joined.toString());
-                }
-            } else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {
-                statusText.setText(getString(R.string.bt_status_scan_finished));
-            }
-        }
-    };
+    private BluetoothTester tester;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,16 +35,18 @@ public class BluetoothTestActivity extends Activity implements View.OnClickListe
         findViewById(R.id.button_bt_enable).setOnClickListener(this);
         findViewById(R.id.button_bt_scan).setOnClickListener(this);
 
-        adapter = BluetoothAdapter.getDefaultAdapter();
+        tester = new BluetoothTester(this, getString(R.string.bt_device_unknown_name), new BluetoothTester.Listener() {
+            @Override
+            public void onDeviceDiscovered(List<String> discoveredDescriptions) {
+                discoveredText.setText(String.join("\n", discoveredDescriptions));
+            }
 
-        IntentFilter filter = new IntentFilter();
-        filter.addAction(BluetoothDevice.ACTION_FOUND);
-        filter.addAction(BluetoothAdapter.ACTION_DISCOVERY_FINISHED);
-        if (Build.VERSION.SDK_INT >= 33) {
-            registerReceiver(receiver, filter, Context.RECEIVER_NOT_EXPORTED);
-        } else {
-            registerReceiver(receiver, filter);
-        }
+            @Override
+            public void onScanFinished() {
+                statusText.setText(getString(R.string.bt_status_scan_finished));
+            }
+        });
+        tester.start();
 
         refreshStatus();
     }
@@ -91,49 +62,45 @@ public class BluetoothTestActivity extends Activity implements View.OnClickListe
     }
 
     private void enableBluetooth() {
-        if (adapter == null) {
+        if (!tester.hasHardware()) {
             statusText.setText(getString(R.string.bt_no_hardware));
             return;
         }
-        if (!hasConnectPermission()) {
+        if (!tester.hasConnectPermission()) {
             requestPermissions(new String[]{Manifest.permission.BLUETOOTH_CONNECT}, REQUEST_CONNECT_PERM);
             return;
         }
-        if (adapter.isEnabled()) {
+        if (tester.isEnabled()) {
             statusText.setText(getString(R.string.bt_already_enabled));
-            refreshPaired();
+            renderPaired();
             return;
         }
-        startActivityForResult(new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE), REQUEST_ENABLE_BT);
+        tester.requestEnable();
     }
 
     private void startScan() {
-        if (adapter == null) {
+        if (!tester.hasHardware()) {
             statusText.setText(getString(R.string.bt_no_hardware));
             return;
         }
-        if (!hasScanPermission()) {
+        if (!tester.hasScanPermission()) {
             requestPermissions(new String[]{Manifest.permission.BLUETOOTH_SCAN}, REQUEST_SCAN_PERM);
             return;
         }
-        if (!adapter.isEnabled()) {
+        if (!tester.isEnabled()) {
             statusText.setText(getString(R.string.bt_enable_first));
             return;
         }
 
-        discoveredDevices.clear();
         discoveredText.setText(getString(R.string.common_dash));
         statusText.setText(getString(R.string.bt_status_scanning));
-        if (adapter.isDiscovering()) {
-            adapter.cancelDiscovery();
-        }
-        adapter.startDiscovery();
+        tester.startScan();
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_ENABLE_BT) {
+        if (requestCode == BluetoothTester.REQUEST_ENABLE_BT) {
             refreshStatus();
         }
     }
@@ -141,7 +108,7 @@ public class BluetoothTestActivity extends Activity implements View.OnClickListe
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        boolean granted = grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED;
+        boolean granted = PermissionUtils.granted(grantResults);
         if (requestCode == REQUEST_CONNECT_PERM && granted) {
             enableBluetooth();
         } else if (requestCode == REQUEST_SCAN_PERM && granted) {
@@ -151,65 +118,31 @@ public class BluetoothTestActivity extends Activity implements View.OnClickListe
         }
     }
 
-    private boolean hasConnectPermission() {
-        if (Build.VERSION.SDK_INT < 31) {
-            return true;
-        }
-        return checkSelfPermission(Manifest.permission.BLUETOOTH_CONNECT) == PackageManager.PERMISSION_GRANTED;
-    }
-
-    private boolean hasScanPermission() {
-        if (Build.VERSION.SDK_INT < 31) {
-            return true;
-        }
-        return checkSelfPermission(Manifest.permission.BLUETOOTH_SCAN) == PackageManager.PERMISSION_GRANTED;
-    }
-
     private void refreshStatus() {
-        if (adapter == null) {
+        if (!tester.hasHardware()) {
             statusText.setText(getString(R.string.bt_no_hardware));
             return;
         }
-        statusText.setText(adapter.isEnabled() ? getString(R.string.bt_status_enabled) : getString(R.string.bt_status_disabled));
-        refreshPaired();
+        statusText.setText(tester.isEnabled() ? getString(R.string.bt_status_enabled) : getString(R.string.bt_status_disabled));
+        renderPaired();
     }
 
-    private void refreshPaired() {
-        if (adapter == null || !adapter.isEnabled() || !hasConnectPermission()) {
+    private void renderPaired() {
+        BluetoothTester.PairedDevicesResult result = tester.readPairedDevices();
+        if (result.unavailable) {
             pairedText.setText(getString(R.string.common_dash));
-            return;
-        }
-        try {
-            Set<BluetoothDevice> bonded = adapter.getBondedDevices();
-            if (bonded.isEmpty()) {
-                pairedText.setText(getString(R.string.bt_no_paired));
-            } else {
-                StringBuilder sb = new StringBuilder();
-                for (BluetoothDevice device : bonded) {
-                    sb.append(describeDevice(device)).append("\n");
-                }
-                pairedText.setText(sb.toString().trim());
-            }
-        } catch (SecurityException e) {
-            pairedText.setText(getString(R.string.bt_permission_error_format, e.getMessage()));
-        }
-    }
-
-    private String describeDevice(BluetoothDevice device) {
-        try {
-            String name = device.getName();
-            return (name != null ? name : getString(R.string.bt_device_unknown_name)) + "  " + device.getAddress();
-        } catch (SecurityException e) {
-            return device.getAddress();
+        } else if (result.permissionErrorMessage != null) {
+            pairedText.setText(getString(R.string.bt_permission_error_format, result.permissionErrorMessage));
+        } else if (result.devices.isEmpty()) {
+            pairedText.setText(getString(R.string.bt_no_paired));
+        } else {
+            pairedText.setText(String.join("\n", result.devices));
         }
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        unregisterReceiver(receiver);
-        if (adapter != null && hasScanPermission() && adapter.isDiscovering()) {
-            adapter.cancelDiscovery();
-        }
+        tester.stop();
     }
 }

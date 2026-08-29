@@ -15,6 +15,7 @@
     <string name="main_button_screen_test">Screen / dead pixel test</string>
     <string name="main_button_sensor_test">Sensor test</string>
     <string name="main_button_multitouch_test">Multitouch test</string>
+    <string name="main_button_paint_test">Full-screen touch paint test</string>
     <string name="main_button_buttons_test">Physical / virtual buttons test</string>
     <string name="main_button_device_info">Device / battery / network info</string>
     <string name="main_section_media">Media</string>
@@ -129,6 +130,10 @@
 
     <!-- Multitouch test -->
     <string name="multitouch_status">Fingers down: %1$d  |  Max detected: %2$d</string>
+
+    <!-- Paint touch test -->
+    <string name="paint_status_format">%1$d/%2$d sectors touched</string>
+    <string name="paint_button_clear">Clear</string>
 
     <!-- Location test -->
     <string name="location_title">GPS / location test</string>
@@ -267,6 +272,7 @@
     <string name="robot_check_device_info">Device info</string>
     <string name="robot_check_microphone">Microphone</string>
     <string name="robot_check_multitouch">Multitouch</string>
+    <string name="robot_check_paint">Full-screen touch paint</string>
     <string name="robot_check_buttons">Physical / virtual buttons</string>
     <string name="robot_check_gps">GPS</string>
     <string name="robot_check_wifi">WiFi</string>
@@ -283,6 +289,7 @@
     <string name="robot_detail_manual_touch">Open \"Sound / vibration / touch test\" and confirm by touch</string>
     <string name="robot_detail_manual_screen">Open \"Screen / dead pixel test\" and check each color by eye</string>
     <string name="robot_detail_manual_multitouch">Open \"Multitouch test\" and check with multiple fingers</string>
+    <string name="robot_detail_manual_paint">Open \"Full-screen touch paint test\" and paint over every sector of the screen</string>
     <string name="robot_detail_manual_buttons">Open \"Physical / virtual buttons test\" and press each button</string>
     <string name="robot_detail_sensor_reading_format">Reading received: %1$s</string>
     <string name="robot_detail_sensor_no_reading">Sensor present but no reading arrived in time</string>

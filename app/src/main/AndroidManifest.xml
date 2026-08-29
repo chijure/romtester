@@ -60,6 +60,10 @@
             android:name=".MultitouchTestActivity"
             android:exported="false" />
         <activity
+            android:name=".PaintTouchTestActivity"
+            android:exported="false"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
+        <activity
             android:name=".LocationTestActivity"
             android:exported="false" />
         <activity

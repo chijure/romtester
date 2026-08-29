@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.ConfigurationInfo;
 import android.content.pm.PackageManager;
+import android.hardware.Camera;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -339,7 +340,9 @@ public class RobotTestActivity extends Activity implements View.OnClickListener 
         checks.add(new Check(R.string.robot_check_camera) {
             @Override
             void run(Callback cb) {
-                boolean hasCamera = pm.hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY);
+                boolean hasCamera = Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD
+                        ? Camera.getNumberOfCameras() > 0
+                        : pm.hasSystemFeature(PackageManager.FEATURE_CAMERA);
                 if (!hasCamera) {
                     cb.done(Status.NOT_APPLICABLE, getString(R.string.robot_detail_camera_not_present));
                     return;
@@ -396,6 +399,13 @@ public class RobotTestActivity extends Activity implements View.OnClickListener 
             @Override
             void run(Callback cb) {
                 cb.done(Status.MANUAL, getString(R.string.robot_detail_manual_multitouch));
+            }
+        });
+
+        checks.add(new Check(R.string.robot_check_paint) {
+            @Override
+            void run(Callback cb) {
+                cb.done(Status.MANUAL, getString(R.string.robot_detail_manual_paint));
             }
         });
 
@@ -614,7 +624,10 @@ public class RobotTestActivity extends Activity implements View.OnClickListener 
         checks.add(new Check(R.string.robot_check_video) {
             @Override
             void run(Callback cb) {
-                if (!pm.hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)) {
+                boolean hasCameraForVideo = Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD
+                        ? Camera.getNumberOfCameras() > 0
+                        : pm.hasSystemFeature(PackageManager.FEATURE_CAMERA);
+                if (!hasCameraForVideo) {
                     cb.done(Status.NOT_APPLICABLE, getString(R.string.robot_detail_video_not_present));
                     return;
                 }

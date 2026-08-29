@@ -15,6 +15,7 @@
     <string name="main_button_screen_test">Prueba de pantalla / píxeles muertos</string>
     <string name="main_button_sensor_test">Prueba de sensores</string>
     <string name="main_button_multitouch_test">Prueba multitáctil</string>
+    <string name="main_button_paint_test">Prueba de pintura táctil en pantalla completa</string>
     <string name="main_button_buttons_test">Prueba de botones físicos / virtuales</string>
     <string name="main_button_device_info">Información de dispositivo / batería / red</string>
     <string name="main_section_media">Multimedia</string>
@@ -129,6 +130,10 @@
 
     <!-- Multitouch test -->
     <string name="multitouch_status">Dedos activos: %1$d  |  Máximo detectado: %2$d</string>
+
+    <!-- Paint touch test -->
+    <string name="paint_status_format">%1$d/%2$d sectores tocados</string>
+    <string name="paint_button_clear">Limpiar</string>
 
     <!-- Location test -->
     <string name="location_title">Prueba de GPS / ubicación</string>
@@ -267,6 +272,7 @@
     <string name="robot_check_device_info">Info del dispositivo</string>
     <string name="robot_check_microphone">Micrófono</string>
     <string name="robot_check_multitouch">Multitáctil</string>
+    <string name="robot_check_paint">Pintura táctil en pantalla completa</string>
     <string name="robot_check_buttons">Botones físicos / virtuales</string>
     <string name="robot_check_gps">GPS</string>
     <string name="robot_check_wifi">WiFi</string>
@@ -283,6 +289,7 @@
     <string name="robot_detail_manual_touch">Abre \"Prueba de sonido / vibración / táctil\" y confírmalo tocando</string>
     <string name="robot_detail_manual_screen">Abre \"Prueba de pantalla / píxeles muertos\" y revisa cada color a simple vista</string>
     <string name="robot_detail_manual_multitouch">Abre \"Prueba multitáctil\" y compruébalo con varios dedos</string>
+    <string name="robot_detail_manual_paint">Abre \"Prueba de pintura táctil en pantalla completa\" y pinta cada sector de la pantalla</string>
     <string name="robot_detail_manual_buttons">Abre \"Prueba de botones físicos / virtuales\" y presiona cada botón</string>
     <string name="robot_detail_sensor_reading_format">Lectura recibida: %1$s</string>
     <string name="robot_detail_sensor_no_reading">El sensor está presente pero no llegó ninguna lectura a tiempo</string>

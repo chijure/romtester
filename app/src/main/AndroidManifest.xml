@@ -39,73 +39,73 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".InputOutputTestActivity"
+            android:name=".basics.InputOutputTestActivity"
             android:exported="false" />
         <activity
-            android:name=".ScreenTestActivity"
+            android:name=".basics.ScreenTestActivity"
             android:exported="false"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
         <activity
-            android:name=".SensorTestActivity"
+            android:name=".basics.SensorTestActivity"
             android:exported="false" />
         <activity
-            android:name=".CameraTestActivity"
+            android:name=".media.CameraTestActivity"
             android:exported="false" />
         <activity
-            android:name=".DeviceInfoActivity"
+            android:name=".basics.DeviceInfoActivity"
             android:exported="false" />
         <activity
-            android:name=".MicrophoneTestActivity"
+            android:name=".media.MicrophoneTestActivity"
             android:exported="false" />
         <activity
-            android:name=".MultitouchTestActivity"
+            android:name=".basics.MultitouchTestActivity"
             android:exported="false" />
         <activity
-            android:name=".PaintTouchTestActivity"
+            android:name=".basics.PaintTouchTestActivity"
             android:exported="false"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
         <activity
-            android:name=".LocationTestActivity"
+            android:name=".connectivity.LocationTestActivity"
             android:exported="false" />
         <activity
-            android:name=".WifiTestActivity"
+            android:name=".connectivity.WifiTestActivity"
             android:exported="false" />
         <activity
-            android:name=".BluetoothTestActivity"
+            android:name=".connectivity.BluetoothTestActivity"
             android:exported="false" />
         <activity
-            android:name=".NfcTestActivity"
+            android:name=".connectivity.NfcTestActivity"
             android:exported="false"
             android:launchMode="singleTop" />
         <activity
-            android:name=".OpenGlTestActivity"
+            android:name=".media.OpenGlTestActivity"
             android:exported="false" />
         <activity
-            android:name=".VideoTestActivity"
+            android:name=".media.VideoTestActivity"
             android:exported="false" />
         <activity
-            android:name=".PhoneTestActivity"
+            android:name=".telephony.PhoneTestActivity"
             android:exported="false" />
         <activity
-            android:name=".SettingsShortcutsActivity"
+            android:name=".telephony.SettingsShortcutsActivity"
             android:exported="false" />
         <activity
-            android:name=".RobotTestActivity"
+            android:name=".report.RobotTestActivity"
             android:exported="false" />
         <activity
-            android:name=".TestHistoryActivity"
+            android:name=".report.TestHistoryActivity"
             android:exported="false" />
         <activity
-            android:name=".ReportDetailActivity"
+            android:name=".report.ReportDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".CompareReportsActivity"
+            android:name=".report.CompareReportsActivity"
             android:exported="false" />
         <activity
-            android:name=".ButtonsTestActivity"
+            android:name=".basics.ButtonsTestActivity"
             android:exported="false" />
         <activity
-            android:name=".StorageTestActivity"
+            android:name=".basics.StorageTestActivity"
             android:exported="false" />
     </application>
 

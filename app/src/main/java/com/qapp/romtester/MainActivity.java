@@ -5,6 +5,27 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.qapp.romtester.basics.ButtonsTestActivity;
+import com.qapp.romtester.basics.DeviceInfoActivity;
+import com.qapp.romtester.basics.InputOutputTestActivity;
+import com.qapp.romtester.basics.MultitouchTestActivity;
+import com.qapp.romtester.basics.PaintTouchTestActivity;
+import com.qapp.romtester.basics.ScreenTestActivity;
+import com.qapp.romtester.basics.SensorTestActivity;
+import com.qapp.romtester.basics.StorageTestActivity;
+import com.qapp.romtester.connectivity.BluetoothTestActivity;
+import com.qapp.romtester.connectivity.LocationTestActivity;
+import com.qapp.romtester.connectivity.NfcTestActivity;
+import com.qapp.romtester.connectivity.WifiTestActivity;
+import com.qapp.romtester.media.CameraTestActivity;
+import com.qapp.romtester.media.MicrophoneTestActivity;
+import com.qapp.romtester.media.OpenGlTestActivity;
+import com.qapp.romtester.media.VideoTestActivity;
+import com.qapp.romtester.report.RobotTestActivity;
+import com.qapp.romtester.report.TestHistoryActivity;
+import com.qapp.romtester.telephony.PhoneTestActivity;
+import com.qapp.romtester.telephony.SettingsShortcutsActivity;
+
 public class MainActivity extends Activity implements View.OnClickListener {
 
     private static final Object[][] MENU_ITEMS = {

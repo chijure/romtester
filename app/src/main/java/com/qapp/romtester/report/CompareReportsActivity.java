@@ -56,30 +56,13 @@ public class CompareReportsActivity extends Activity {
         }
     }
 
-    @SuppressWarnings("deprecation")
     private void appendCompareLine(SpannableStringBuilder builder, String name, String oldStatus, String newStatus) {
         String oldTag = oldStatus == null ? "—" : ReportRenderer.tagForStatus(this, oldStatus);
         String newTag = ReportRenderer.tagForStatus(this, newStatus);
 
-        boolean regression = "PASS".equals(oldStatus) && "FAIL".equals(newStatus);
-        boolean improvement = "FAIL".equals(oldStatus) && "PASS".equals(newStatus);
-        boolean unchanged = newStatus.equals(oldStatus);
-
-        int color;
-        String marker;
-        if (regression) {
-            color = getResources().getColor(R.color.danger);
-            marker = "↓ ";
-        } else if (improvement) {
-            color = getResources().getColor(R.color.success);
-            marker = "↑ ";
-        } else if (unchanged) {
-            color = getResources().getColor(R.color.text_secondary);
-            marker = "= ";
-        } else {
-            color = getResources().getColor(R.color.manual);
-            marker = "~ ";
-        }
+        ReportRenderer.ChangeKind kind = ReportRenderer.classifyChange(oldStatus, newStatus);
+        int color = ReportRenderer.colorForChange(this, kind);
+        String marker = ReportRenderer.markerForChange(kind);
 
         String line = marker + name + ": " + oldTag + " → " + newTag + "\n";
         int start = builder.length();

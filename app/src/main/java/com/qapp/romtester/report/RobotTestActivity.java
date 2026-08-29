@@ -1,6 +1,11 @@
 package com.qapp.romtester.report;
 
 import com.qapp.romtester.R;
+import com.qapp.romtester.util.HardwareCapabilities;
+import com.qapp.romtester.util.PermissionUtils;
+import com.qapp.romtester.util.ReceiverUtils;
+import com.qapp.romtester.util.StorageUtils;
+import com.qapp.romtester.util.VibrationUtils;
 
 import android.Manifest;
 import android.app.ActivityManager;
@@ -13,7 +18,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.ConfigurationInfo;
 import android.content.pm.PackageManager;
-import android.hardware.Camera;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -33,9 +37,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
-import android.os.StatFs;
 import android.os.Vibrator;
-import android.os.VibrationEffect;
 import android.telephony.TelephonyManager;
 import android.text.SpannableStringBuilder;
 import android.view.View;
@@ -132,28 +134,19 @@ public class RobotTestActivity extends Activity implements View.OnClickListener 
     }
 
     private void requestPermissionsThenRun() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            startRun();
-            return;
-        }
-        List<String> missing = new ArrayList<>();
-        addIfMissing(missing, Manifest.permission.RECORD_AUDIO);
-        addIfMissing(missing, Manifest.permission.ACCESS_FINE_LOCATION);
-        addIfMissing(missing, Manifest.permission.READ_PHONE_STATE);
+        List<String> toCheck = new ArrayList<>();
+        toCheck.add(Manifest.permission.RECORD_AUDIO);
+        toCheck.add(Manifest.permission.ACCESS_FINE_LOCATION);
+        toCheck.add(Manifest.permission.READ_PHONE_STATE);
         if (Build.VERSION.SDK_INT >= 31) {
-            addIfMissing(missing, Manifest.permission.BLUETOOTH_SCAN);
-            addIfMissing(missing, Manifest.permission.BLUETOOTH_CONNECT);
+            toCheck.add(Manifest.permission.BLUETOOTH_SCAN);
+            toCheck.add(Manifest.permission.BLUETOOTH_CONNECT);
         }
-        if (missing.isEmpty()) {
+        String[] missing = PermissionUtils.missing(this, toCheck.toArray(new String[0]));
+        if (missing.length == 0) {
             startRun();
         } else {
-            requestPermissions(missing.toArray(new String[0]), REQUEST_ALL_PERMISSIONS);
-        }
-    }
-
-    private void addIfMissing(List<String> list, String permission) {
-        if (checkSelfPermission(permission) != PackageManager.PERMISSION_GRANTED) {
-            list.add(permission);
+            requestPermissions(missing, REQUEST_ALL_PERMISSIONS);
         }
     }
 
@@ -163,13 +156,6 @@ public class RobotTestActivity extends Activity implements View.OnClickListener 
         if (requestCode == REQUEST_ALL_PERMISSIONS) {
             startRun();
         }
-    }
-
-    private boolean hasPermission(String permission) {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            return true;
-        }
-        return checkSelfPermission(permission) == PackageManager.PERMISSION_GRANTED;
     }
 
     private void startRun() {
@@ -304,17 +290,11 @@ public class RobotTestActivity extends Activity implements View.OnClickListener 
             @Override
             void run(Callback cb) {
                 Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
-                boolean hasVibrator = vibrator != null
-                        && (Build.VERSION.SDK_INT < 11 || vibrator.hasVibrator());
-                if (!hasVibrator) {
+                if (!HardwareCapabilities.hasVibrator(vibrator)) {
                     cb.done(Status.NOT_APPLICABLE, getString(R.string.robot_detail_no_vibrator));
                     return;
                 }
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    vibrator.vibrate(VibrationEffect.createOneShot(300, VibrationEffect.DEFAULT_AMPLITUDE));
-                } else {
-                    vibrator.vibrate(300);
-                }
+                VibrationUtils.vibrate(vibrator, 300);
                 cb.done(Status.PASS, getString(R.string.robot_detail_vibration_triggered));
             }
         });
@@ -342,9 +322,7 @@ public class RobotTestActivity extends Activity implements View.OnClickListener 
         checks.add(new Check(R.string.robot_check_camera) {
             @Override
             void run(Callback cb) {
-                boolean hasCamera = Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD
-                        ? Camera.getNumberOfCameras() > 0
-                        : pm.hasSystemFeature(PackageManager.FEATURE_CAMERA);
+                boolean hasCamera = HardwareCapabilities.hasCamera(pm);
                 if (!hasCamera) {
                     cb.done(Status.NOT_APPLICABLE, getString(R.string.robot_detail_camera_not_present));
                     return;
@@ -365,7 +343,7 @@ public class RobotTestActivity extends Activity implements View.OnClickListener 
         checks.add(new Check(R.string.robot_check_microphone) {
             @Override
             void run(Callback cb) {
-                if (!hasPermission(Manifest.permission.RECORD_AUDIO)) {
+                if (!PermissionUtils.has(RobotTestActivity.this, Manifest.permission.RECORD_AUDIO)) {
                     cb.done(Status.MANUAL, getString(R.string.robot_detail_mic_permission));
                     return;
                 }
@@ -426,7 +404,7 @@ public class RobotTestActivity extends Activity implements View.OnClickListener 
                     cb.done(Status.NOT_APPLICABLE, getString(R.string.robot_detail_gps_not_present));
                     return;
                 }
-                if (!hasPermission(Manifest.permission.ACCESS_FINE_LOCATION)) {
+                if (!PermissionUtils.has(RobotTestActivity.this, Manifest.permission.ACCESS_FINE_LOCATION)) {
                     cb.done(Status.MANUAL, getString(R.string.robot_detail_gps_permission));
                     return;
                 }
@@ -483,7 +461,7 @@ public class RobotTestActivity extends Activity implements View.OnClickListener 
                     cb.done(Status.FAIL, getString(R.string.robot_detail_wifi_disabled));
                     return;
                 }
-                if (!hasPermission(Manifest.permission.ACCESS_FINE_LOCATION)) {
+                if (!PermissionUtils.has(RobotTestActivity.this, Manifest.permission.ACCESS_FINE_LOCATION)) {
                     cb.done(Status.MANUAL, getString(R.string.robot_detail_wifi_permission));
                     return;
                 }
@@ -496,7 +474,7 @@ public class RobotTestActivity extends Activity implements View.OnClickListener 
                             return;
                         }
                         finished[0] = true;
-                        unregisterReceiver(this);
+                        ReceiverUtils.unregisterQuietly(RobotTestActivity.this, this);
                         List<ScanResult> scanResults = wifiManager.getScanResults();
                         int count = scanResults == null ? 0 : scanResults.size();
                         cb.done(count > 0 ? Status.PASS : Status.FAIL,
@@ -505,19 +483,12 @@ public class RobotTestActivity extends Activity implements View.OnClickListener 
                     }
                 };
                 IntentFilter wifiFilter = new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION);
-                if (Build.VERSION.SDK_INT >= 33) {
-                    registerReceiver(receiver, wifiFilter, Context.RECEIVER_NOT_EXPORTED);
-                } else {
-                    registerReceiver(receiver, wifiFilter);
-                }
+                ReceiverUtils.register(RobotTestActivity.this, receiver, wifiFilter);
                 boolean started = wifiManager.startScan();
                 handler.postDelayed(() -> {
                     if (!finished[0]) {
                         finished[0] = true;
-                        try {
-                            unregisterReceiver(receiver);
-                        } catch (IllegalArgumentException ignored) {
-                        }
+                        ReceiverUtils.unregisterQuietly(RobotTestActivity.this, receiver);
                         List<ScanResult> scanResults = wifiManager.getScanResults();
                         int count = scanResults == null ? 0 : scanResults.size();
                         cb.done(count > 0 ? Status.PASS : Status.FAIL,
@@ -545,8 +516,8 @@ public class RobotTestActivity extends Activity implements View.OnClickListener 
                     return;
                 }
                 boolean hasBtPermission = Build.VERSION.SDK_INT < 31
-                        || (hasPermission(Manifest.permission.BLUETOOTH_SCAN)
-                        && hasPermission(Manifest.permission.BLUETOOTH_CONNECT));
+                        || (PermissionUtils.has(RobotTestActivity.this, Manifest.permission.BLUETOOTH_SCAN)
+                        && PermissionUtils.has(RobotTestActivity.this, Manifest.permission.BLUETOOTH_CONNECT));
                 if (!hasBtPermission) {
                     cb.done(Status.MANUAL, getString(R.string.robot_detail_bt_permission));
                     return;
@@ -572,11 +543,7 @@ public class RobotTestActivity extends Activity implements View.OnClickListener 
                         }
                     };
                     IntentFilter btFilter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
-                    if (Build.VERSION.SDK_INT >= 33) {
-                        registerReceiver(receiver, btFilter, Context.RECEIVER_NOT_EXPORTED);
-                    } else {
-                        registerReceiver(receiver, btFilter);
-                    }
+                    ReceiverUtils.register(RobotTestActivity.this, receiver, btFilter);
                     adapter.startDiscovery();
                     handler.postDelayed(() -> {
                         if (finished[0]) {
@@ -584,7 +551,7 @@ public class RobotTestActivity extends Activity implements View.OnClickListener 
                         }
                         finished[0] = true;
                         adapter.cancelDiscovery();
-                        unregisterReceiver(receiver);
+                        ReceiverUtils.unregisterQuietly(RobotTestActivity.this, receiver);
                         cb.done(Status.PASS, getString(R.string.robot_detail_bt_devices_format,
                                 pairedCount, discovered.size()));
                     }, 6000);
@@ -626,9 +593,7 @@ public class RobotTestActivity extends Activity implements View.OnClickListener 
         checks.add(new Check(R.string.robot_check_video) {
             @Override
             void run(Callback cb) {
-                boolean hasCameraForVideo = Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD
-                        ? Camera.getNumberOfCameras() > 0
-                        : pm.hasSystemFeature(PackageManager.FEATURE_CAMERA);
+                boolean hasCameraForVideo = HardwareCapabilities.hasCamera(pm);
                 if (!hasCameraForVideo) {
                     cb.done(Status.NOT_APPLICABLE, getString(R.string.robot_detail_video_not_present));
                     return;
@@ -661,7 +626,7 @@ public class RobotTestActivity extends Activity implements View.OnClickListener 
                     cb.done(Status.NOT_APPLICABLE, getString(R.string.robot_detail_phone_not_present));
                     return;
                 }
-                if (!hasPermission(Manifest.permission.READ_PHONE_STATE)) {
+                if (!PermissionUtils.has(RobotTestActivity.this, Manifest.permission.READ_PHONE_STATE)) {
                     cb.done(Status.MANUAL, getString(R.string.robot_detail_phone_permission));
                     return;
                 }
@@ -730,13 +695,7 @@ public class RobotTestActivity extends Activity implements View.OnClickListener 
             }
         }
 
-        StatFs statFs = new StatFs(Environment.getDataDirectory().getPath());
-        long freeBytes;
-        if (Build.VERSION.SDK_INT >= 18) {
-            freeBytes = statFs.getAvailableBlocksLong() * statFs.getBlockSizeLong();
-        } else {
-            freeBytes = (long) statFs.getAvailableBlocks() * statFs.getBlockSize();
-        }
+        long freeBytes = StorageUtils.availableBytes(Environment.getDataDirectory());
 
         return getString(R.string.robot_detail_device_info_format, model, Build.VERSION.RELEASE,
                 batteryPercent, freeBytes / (1024f * 1024f));

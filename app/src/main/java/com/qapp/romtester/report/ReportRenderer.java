@@ -48,4 +48,46 @@ public class ReportRenderer {
         builder.setSpan(new ForegroundColorSpan(colorForStatus(context, status)), start,
                 start + ("[" + tag + "]").length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
     }
+
+    public enum ChangeKind { REGRESSION, IMPROVEMENT, UNCHANGED, OTHER }
+
+    public static ChangeKind classifyChange(String oldStatus, String newStatus) {
+        if ("PASS".equals(oldStatus) && "FAIL".equals(newStatus)) {
+            return ChangeKind.REGRESSION;
+        }
+        if ("FAIL".equals(oldStatus) && "PASS".equals(newStatus)) {
+            return ChangeKind.IMPROVEMENT;
+        }
+        if (newStatus.equals(oldStatus)) {
+            return ChangeKind.UNCHANGED;
+        }
+        return ChangeKind.OTHER;
+    }
+
+    @SuppressWarnings("deprecation")
+    public static int colorForChange(Context context, ChangeKind kind) {
+        switch (kind) {
+            case REGRESSION:
+                return context.getResources().getColor(R.color.danger);
+            case IMPROVEMENT:
+                return context.getResources().getColor(R.color.success);
+            case UNCHANGED:
+                return context.getResources().getColor(R.color.text_secondary);
+            default:
+                return context.getResources().getColor(R.color.manual);
+        }
+    }
+
+    public static String markerForChange(ChangeKind kind) {
+        switch (kind) {
+            case REGRESSION:
+                return "↓ ";
+            case IMPROVEMENT:
+                return "↑ ";
+            case UNCHANGED:
+                return "= ";
+            default:
+                return "~ ";
+        }
+    }
 }

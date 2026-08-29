@@ -1,16 +1,11 @@
 package com.qapp.romtester.telephony;
 
 import com.qapp.romtester.R;
+import com.qapp.romtester.tester.PhoneTester;
 
 import android.Manifest;
 import android.app.Activity;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.telephony.PhoneStateListener;
-import android.telephony.SignalStrength;
 import android.telephony.TelephonyManager;
 import android.view.View;
 import android.widget.TextView;
@@ -21,20 +16,8 @@ public class PhoneTestActivity extends Activity implements View.OnClickListener 
     private static final int REQUEST_READ_PHONE_STATE = 1;
 
     private TextView infoText;
-    private TelephonyManager telephonyManager;
+    private PhoneTester tester;
     private String signalInfo;
-
-    private final PhoneStateListener signalListener = new PhoneStateListener() {
-        @Override
-        public void onSignalStrengthsChanged(SignalStrength signalStrength) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                signalInfo = getString(R.string.phone_signal_level_format, signalStrength.getLevel());
-            } else {
-                signalInfo = getString(R.string.phone_signal_asu_format, signalStrength.getGsmSignalStrength());
-            }
-            refreshInfo();
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,13 +29,30 @@ public class PhoneTestActivity extends Activity implements View.OnClickListener 
         findViewById(R.id.button_open_dialer).setOnClickListener(this);
         findViewById(R.id.button_open_sms).setOnClickListener(this);
 
-        telephonyManager = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+        tester = new PhoneTester(this, new PhoneTester.Listener() {
+            @Override
+            public void onSignalStrength(boolean isLevel, int value) {
+                signalInfo = isLevel
+                        ? getString(R.string.phone_signal_level_format, value)
+                        : getString(R.string.phone_signal_asu_format, value);
+                refreshInfo();
+            }
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
-                && checkSelfPermission(Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(new String[]{Manifest.permission.READ_PHONE_STATE}, REQUEST_READ_PHONE_STATE);
-        } else {
+            @Override
+            public void onDialerUnavailable() {
+                Toast.makeText(PhoneTestActivity.this, getString(R.string.phone_no_dialer_app), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onSmsUnavailable() {
+                Toast.makeText(PhoneTestActivity.this, getString(R.string.phone_no_sms_app), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        if (tester.hasPermission()) {
             refreshInfo();
+        } else {
+            requestPermissions(new String[]{Manifest.permission.READ_PHONE_STATE}, REQUEST_READ_PHONE_STATE);
         }
     }
 
@@ -67,53 +67,33 @@ public class PhoneTestActivity extends Activity implements View.OnClickListener 
     @Override
     protected void onResume() {
         super.onResume();
-        telephonyManager.listen(signalListener, PhoneStateListener.LISTEN_SIGNAL_STRENGTHS);
+        tester.start();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        telephonyManager.listen(signalListener, PhoneStateListener.LISTEN_NONE);
+        tester.stop();
     }
 
     @Override
     public void onClick(View view) {
         int id = view.getId();
         if (id == R.id.button_open_dialer) {
-            openDialer();
+            tester.openDialer();
         } else if (id == R.id.button_open_sms) {
-            openSms();
-        }
-    }
-
-    private void openDialer() {
-        Intent intent = new Intent(Intent.ACTION_DIAL);
-        if (intent.resolveActivity(getPackageManager()) != null) {
-            startActivity(intent);
-        } else {
-            Toast.makeText(this, getString(R.string.phone_no_dialer_app), Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private void openSms() {
-        Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse("smsto:"));
-        intent.putExtra("sms_body", getString(R.string.phone_sms_draft_body));
-        if (intent.resolveActivity(getPackageManager()) != null) {
-            startActivity(intent);
-        } else {
-            Toast.makeText(this, getString(R.string.phone_no_sms_app), Toast.LENGTH_SHORT).show();
+            tester.openSms(getString(R.string.phone_sms_draft_body));
         }
     }
 
     private void refreshInfo() {
-        String simState = describeSimState(telephonyManager.getSimState());
-        String phoneType = describePhoneType(telephonyManager.getPhoneType());
-        String networkType = describeNetworkType(telephonyManager.getNetworkType());
-        String operator = telephonyManager.getNetworkOperatorName();
+        PhoneTester.TelephonyInfo info = tester.readTelephonyInfo();
+        String simState = describeSimState(info.simState);
+        String phoneType = describePhoneType(info.phoneType);
+        String networkType = describeNetworkType(info.networkType);
+        String operator = info.operatorNameOrNull != null ? info.operatorNameOrNull : getString(R.string.common_dash);
 
-        infoText.setText(getString(R.string.phone_info_format, simState, phoneType, networkType,
-                operator == null || operator.length() == 0 ? getString(R.string.common_dash) : operator,
-                signalInfo));
+        infoText.setText(getString(R.string.phone_info_format, simState, phoneType, networkType, operator, signalInfo));
     }
 
     private String describeSimState(int state) {

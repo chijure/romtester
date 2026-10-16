@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.qapp.romtester.basics.ButtonsTestActivity;
+import com.qapp.romtester.basics.BatteryTestActivity;
 import com.qapp.romtester.basics.DeviceInfoActivity;
 import com.qapp.romtester.basics.InputOutputTestActivity;
 import com.qapp.romtester.basics.MultitouchTestActivity;
@@ -19,6 +20,7 @@ import com.qapp.romtester.connectivity.NfcTestActivity;
 import com.qapp.romtester.connectivity.WifiTestActivity;
 import com.qapp.romtester.media.CameraTestActivity;
 import com.qapp.romtester.media.MicrophoneTestActivity;
+import com.qapp.romtester.media.GpuBenchmarkActivity;
 import com.qapp.romtester.media.OpenGlTestActivity;
 import com.qapp.romtester.media.VideoTestActivity;
 import com.qapp.romtester.report.RobotTestActivity;
@@ -36,6 +38,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
             {R.id.button_sensor_test, SensorTestActivity.class},
             {R.id.button_camera_test, CameraTestActivity.class},
             {R.id.button_device_info, DeviceInfoActivity.class},
+            {R.id.button_battery_test, BatteryTestActivity.class},
             {R.id.button_microphone_test, MicrophoneTestActivity.class},
             {R.id.button_multitouch_test, MultitouchTestActivity.class},
             {R.id.button_paint_test, PaintTouchTestActivity.class},
@@ -45,6 +48,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
             {R.id.button_bluetooth_test, BluetoothTestActivity.class},
             {R.id.button_nfc_test, NfcTestActivity.class},
             {R.id.button_opengl_test, OpenGlTestActivity.class},
+            {R.id.button_gpu_benchmark, GpuBenchmarkActivity.class},
             {R.id.button_video_test, VideoTestActivity.class},
             {R.id.button_phone_test, PhoneTestActivity.class},
             {R.id.button_settings_shortcuts, SettingsShortcutsActivity.class},

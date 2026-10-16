@@ -55,6 +55,9 @@
             android:name=".basics.DeviceInfoActivity"
             android:exported="false" />
         <activity
+            android:name=".basics.BatteryTestActivity"
+            android:exported="false" />
+        <activity
             android:name=".media.MicrophoneTestActivity"
             android:exported="false" />
         <activity
@@ -79,6 +82,9 @@
             android:launchMode="singleTop" />
         <activity
             android:name=".media.OpenGlTestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".media.GpuBenchmarkActivity"
             android:exported="false" />
         <activity
             android:name=".media.VideoTestActivity"

@@ -138,6 +138,16 @@
                 android:text="@string/main_button_device_info" />
 
             <Button
+                android:id="@+id/button_battery_test"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:drawableLeft="@android:drawable/ic_menu_manage"
+                android:drawablePadding="12dp"
+                android:gravity="center_vertical|left"
+                android:text="@string/main_button_battery_test" />
+
+            <Button
                 android:id="@+id/button_storage_test"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -193,6 +203,16 @@
                 android:drawablePadding="12dp"
                 android:gravity="center_vertical|left"
                 android:text="@string/main_button_opengl_test" />
+
+            <Button
+                android:id="@+id/button_gpu_benchmark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:drawableLeft="@android:drawable/ic_menu_manage"
+                android:drawablePadding="12dp"
+                android:gravity="center_vertical|left"
+                android:text="@string/main_button_gpu_benchmark" />
 
             <TextView
                 style="@style/SectionLabel"

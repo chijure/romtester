@@ -18,11 +18,26 @@
     <string name="main_button_paint_test">Prueba de pintura táctil en pantalla completa</string>
     <string name="main_button_buttons_test">Prueba de botones físicos / virtuales</string>
     <string name="main_button_device_info">Información de dispositivo / batería / red</string>
+    <string name="main_button_battery_test">Prueba de estrés de batería (caída de voltaje)</string>
+    <!-- Battery stress test -->
+    <string name="battery_test_unplug" formatted="false">Desconecta el cable USB / cargador para empezar.\nLa corriente del cargador oculta la caída de voltaje.\nIdeal con 50–90% de carga.</string>
+    <string name="battery_test_phase_idle">Reposo</string>
+    <string name="battery_test_phase_load">Carga máxima (GPU + CPU + linterna)</string>
+    <string name="battery_test_phase_recovery">Recuperación</string>
+    <string name="battery_test_progress_format">Fase: %1$s\nTiempo restante: %2$d s\nVoltaje: %3$.3f V\n\nMantén el teléfono desconectado.</string>
+    <string name="battery_test_result_format">Nivel de batería: %1$d%%\nTemperatura: %2$s C\n\nVoltaje en reposo:   %3$.3f V\nPromedio bajo carga: %4$.3f V\nMínimo bajo carga:   %5$.3f V\nCaída bajo carga:    %6$.3f V\nTras recuperación:   %7$.3f V\n</string>
+    <string name="battery_test_verdict_good">Veredicto: BUENA. Poca caída de voltaje bajo carga.</string>
+    <string name="battery_test_verdict_fair">Veredicto: ENVEJECIDA. Caída notable; puede reiniciar con carga pesada cuando la batería está baja.</string>
+    <string name="battery_test_verdict_poor">Veredicto: DESGASTADA. Gran caída bajo carga; puede reiniciar el teléfono (corte del PMIC). Cambia la batería.</string>
+    <string name="battery_test_verdict_unknown">Veredicto: desconocido (sin lecturas de voltaje útiles).</string>
+    <string name="battery_test_interrupted_format">PRUEBA ANTERIOR INTERRUMPIDA (probablemente el teléfono se reinició).\nSe detuvo en la fase: %1$s, a los %2$d s\nVoltaje en reposo: %3$.3f V, mínimo visto: %4$.3f V\nVeredicto: DESGASTADA. La batería no aguanta la carga y el PMIC cortó la energía. Cambia la batería.</string>
+    <string name="battery_test_not_live">Aviso: el voltaje no cambió durante la carga. Este kernel guarda el voltaje en caché (a menudo 30 s), así que aquí no se puede medir la caída.</string>
     <string name="main_section_media">Multimedia</string>
     <string name="main_button_camera_test">Prueba de cámara / linterna</string>
     <string name="main_button_microphone_test">Prueba de micrófono</string>
     <string name="main_button_video_test">Prueba de grabación / reproducción de video</string>
     <string name="main_button_opengl_test">Prueba de renderizado OpenGL</string>
+    <string name="main_button_gpu_benchmark">Benchmark de GPU (sin límite de FPS)</string>
     <string name="main_section_connectivity">Conectividad</string>
     <string name="main_button_location_test">Prueba de GPS / ubicación</string>
     <string name="main_button_wifi_test">Prueba de WiFi</string>
@@ -372,6 +387,18 @@
     <!-- OpenGL test -->
     <string name="opengl_status_initializing">Inicializando OpenGL...</string>
     <string name="opengl_info_format">Versión GLES: %1$s\nRenderer: %2$s\nProveedor: %3$s\nFPS: %4$d</string>
+
+    <!-- GPU benchmark -->
+    <string name="gpu_bench_status_starting">Iniciando benchmark de GPU...</string>
+    <string name="gpu_bench_status_running">Ejecutando... (unos 15 s, mantén la pantalla encendida)</string>
+    <string name="gpu_bench_status_done">Listo. Render fuera de pantalla, sin el límite de refresco de la pantalla.</string>
+    <string name="gpu_bench_header_format">Renderer: %1$s\nProveedor: %2$s\nGLES: %3$s\n</string>
+    <string name="gpu_bench_fill">Relleno (fill)</string>
+    <string name="gpu_bench_alu">Shader ALU</string>
+    <string name="gpu_bench_texture">Texturas</string>
+    <string name="gpu_bench_geometry">Geometría</string>
+    <string name="gpu_bench_scene">Escena 1280x720</string>
+    <string name="gpu_bench_unsupported">El benchmark de GPU necesita Android 2.3 (API 9) o superior.</string>
 
     <!-- Buttons test -->
     <string name="buttons_title">Prueba de botones físicos / virtuales</string>

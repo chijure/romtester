@@ -18,11 +18,26 @@
     <string name="main_button_paint_test">Full-screen touch paint test</string>
     <string name="main_button_buttons_test">Physical / virtual buttons test</string>
     <string name="main_button_device_info">Device / battery / network info</string>
+    <string name="main_button_battery_test">Battery stress test (voltage sag)</string>
+    <!-- Battery stress test -->
+    <string name="battery_test_unplug" formatted="false">Unplug the USB cable / charger to start.\nThe charger current hides the voltage drop.\nBest at 50–90% charge.</string>
+    <string name="battery_test_phase_idle">Idle</string>
+    <string name="battery_test_phase_load">Full load (GPU + CPU + torch)</string>
+    <string name="battery_test_phase_recovery">Recovery</string>
+    <string name="battery_test_progress_format">Phase: %1$s\nTime left: %2$d s\nVoltage: %3$.3f V\n\nKeep the phone unplugged.</string>
+    <string name="battery_test_result_format">Battery level: %1$d%%\nTemperature: %2$s C\n\nIdle voltage:     %3$.3f V\nLoad average:     %4$.3f V\nLoad minimum:     %5$.3f V\nDrop under load:  %6$.3f V\nAfter recovery:   %7$.3f V\n</string>
+    <string name="battery_test_verdict_good">Verdict: GOOD. Small voltage drop under load.</string>
+    <string name="battery_test_verdict_fair">Verdict: AGING. Noticeable drop; it may reset under heavy load when the charge is low.</string>
+    <string name="battery_test_verdict_poor">Verdict: WORN. Large drop under load; it can reset the phone (PMIC cutoff). Replace the battery.</string>
+    <string name="battery_test_verdict_unknown">Verdict: unknown (no usable voltage readings).</string>
+    <string name="battery_test_interrupted_format">PREVIOUS TEST INTERRUPTED (the phone probably reset).\nIt stopped in phase: %1$s, after %2$d s\nIdle voltage: %3$.3f V, lowest seen: %4$.3f V\nVerdict: WORN. The battery cannot hold the load and the PMIC cut the power. Replace the battery.</string>
+    <string name="battery_test_not_live">Warning: the voltage did not change during the load. This kernel caches the battery voltage (often for 30 s), so the drop cannot be measured here.</string>
     <string name="main_section_media">Media</string>
     <string name="main_button_camera_test">Camera / flashlight test</string>
     <string name="main_button_microphone_test">Microphone test</string>
     <string name="main_button_video_test">Video record / playback test</string>
     <string name="main_button_opengl_test">OpenGL rendering test</string>
+    <string name="main_button_gpu_benchmark">GPU benchmark (uncapped)</string>
     <string name="main_section_connectivity">Connectivity</string>
     <string name="main_button_location_test">GPS / location test</string>
     <string name="main_button_wifi_test">WiFi test</string>
@@ -372,6 +387,18 @@
     <!-- OpenGL test -->
     <string name="opengl_status_initializing">Initializing OpenGL...</string>
     <string name="opengl_info_format">GLES version: %1$s\nRenderer: %2$s\nVendor: %3$s\nFPS: %4$d</string>
+
+    <!-- GPU benchmark -->
+    <string name="gpu_bench_status_starting">Starting GPU benchmark...</string>
+    <string name="gpu_bench_status_running">Running... (about 15 s, keep the screen on)</string>
+    <string name="gpu_bench_status_done">Done. Offscreen rendering, not limited by the display refresh rate.</string>
+    <string name="gpu_bench_header_format">Renderer: %1$s\nVendor: %2$s\nGLES: %3$s\n</string>
+    <string name="gpu_bench_fill">Fill rate</string>
+    <string name="gpu_bench_alu">Shader ALU</string>
+    <string name="gpu_bench_texture">Texture sampling</string>
+    <string name="gpu_bench_geometry">Geometry</string>
+    <string name="gpu_bench_scene">Scene 1280x720</string>
+    <string name="gpu_bench_unsupported">The GPU benchmark needs Android 2.3 (API 9) or newer.</string>
 
     <!-- Buttons test -->
     <string name="buttons_title">Physical / virtual buttons test</string>
